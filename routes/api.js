@@ -29,6 +29,7 @@ function generateQR(req,res,next){
         response["status"] = "ok"
         response["uri"] = url;
         req.body = response;
+        res.send(response);
         // 
         // TO DO : Add/Update qrcode uri in the database
         // 
