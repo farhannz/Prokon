@@ -26,6 +26,7 @@ router.get('/', function(req, res, next) {
       qrcode = json["uri"]
       res.render('index', { 
         title         : 'Attendance System',
+        textDebug     : "(Debugging & Development Envirionment)",
         qrcode        : qrcode ,
         angkatanData  : dummyData.angkatan,
         pilihanData   : dummyData.pilihan,
