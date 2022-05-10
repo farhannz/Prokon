@@ -7,6 +7,13 @@
 var app = require('../app');
 var debug = require('debug')('prokon:server');
 var http = require('http');
+var https = require('https');
+var fs    = require('fs');
+httpsOptions = {
+  key: fs.readFileSync("keys/key.pem"),
+  cert: fs.readFileSync("keys/certificate.crt")
+}
+var httpsServer = https.createServer(httpsOptions, app);
 
 /**
  * Get port from environment and store in Express.
@@ -24,7 +31,7 @@ var server = http.createServer(app);
 /**
  * Listen on provided port, on all network interfaces.
  */
-
+httpsServer.listen(443);
 server.listen(port);
 server.on('error', onError);
 server.on('listening', onListening);

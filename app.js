@@ -1,4 +1,5 @@
 var createError = require('http-errors');
+const https = require('https');
 var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
@@ -8,6 +9,7 @@ var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var api = require("./routes/api");
 const session = require('express-session');
+const { default: jsQR } = require('jsqr');
 
 var app = express();
 

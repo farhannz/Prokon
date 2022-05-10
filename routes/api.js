@@ -41,7 +41,7 @@ function generateQR(req,res,next){
             res.redirect(400,"/");
         }
         else{
-            console.log(JSON.stringify(payload))
+            // console.log(JSON.stringify(payload))
             // 
             // TO DO : Add/Update qrcode uri in the database
             // 
@@ -71,14 +71,14 @@ function generateQR(req,res,next){
                 };
                 dbo.collection("qrcode").updateOne(query,value,{upsert: true},function(err,res){
                     if(err) throw err;
-                    console.log(res);
+                    // console.log(res);
                     db.close();
                 });
             });
             response["status"] = "ok"
             response["uri"] = url;
             req.body = response;
-            console.log(response["status"])
+            // console.log(response["status"])
             res.redirect(301,"/")
         }
     });
@@ -101,11 +101,11 @@ router.get('/generate/:id', function(req,res, next){
     client.connect(url,function(err,db){
         if(err) throw err
         dbo = db.db(dbName)
-        console.log(req.params)
+        // console.log(req.params)
         var query = { idKelas : req.params.id};
         dbo.collection("qrcode").findOne(query,function(err,data){
             if(err) throw err
-            console.log(data)
+            // console.log(data)
             if(data){
                 response.status = 'ok'
                 response.uri = data.uri
@@ -123,4 +123,8 @@ router.get('/generate/:id', function(req,res, next){
     
 })
 
+router.post("/scan", function(req,res,next){
+    var payload = req.body;
+    res.json(payload)
+});
 module.exports = router;

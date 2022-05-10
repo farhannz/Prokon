@@ -1,9 +1,11 @@
 var express = require('express');
 const { METHODS } = require('http');
 var qr = require('qrcode');
-var scanner = require('jsqr')
+var jsQR = require('jsqr');
 var router = express.Router();
 var fetch = require('node-fetch');
+const { default: adapter } = require('webrtc-adapter');
+
 
 
 var dummyData = {angkatan : ["10","11","12"], pilihan : ["IPA","IPS"], kelas : ["1","2","3","4"]}
@@ -17,7 +19,7 @@ router.get('/', function(req, res, next) {
   req.session.kelas = req.query.Angkatan+req.query.Pilihan+req.query.Kelas;
   // Debug
   if(!Object.keys(req.query).length) req.session.kelas = "10IPA1"
-  console.log(req.query)
+  // console.log(req.query)
 
   
   // console.log(req.session.kelas)
@@ -28,9 +30,7 @@ router.get('/', function(req, res, next) {
     .then(json => {
       return json;
     });
-  
-  // console.log(fetchedData)
-  req.session
+
   const m_render = () => {
     fetchedData.then((json)=>{
       // console.log(json)
@@ -44,7 +44,6 @@ router.get('/', function(req, res, next) {
         kelasData     : dummyData.kelas,
         reqBody       : req.body.Angkatan,
         _kelas        : req.session.kelas,
-        videoScanner : QrScanner(videoScanner, )
       });
     })
   }
