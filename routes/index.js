@@ -1,9 +1,10 @@
 var express = require('express');
 const { METHODS } = require('http');
 var qr = require('qrcode');
-
+var scanner = require('jsqr')
 var router = express.Router();
-var fetch = require('node-fetch')
+var fetch = require('node-fetch');
+
 
 var dummyData = {angkatan : ["10","11","12"], pilihan : ["IPA","IPS"], kelas : ["1","2","3","4"]}
 
@@ -42,7 +43,8 @@ router.get('/', function(req, res, next) {
         pilihanData   : dummyData.pilihan,
         kelasData     : dummyData.kelas,
         reqBody       : req.body.Angkatan,
-        _kelas        : req.session.kelas
+        _kelas        : req.session.kelas,
+        videoScanner : QrScanner(videoScanner, )
       });
     })
   }

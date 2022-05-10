@@ -70,6 +70,10 @@ block content
   label(for="name")   Kelas  :   
   input(type="text", disabled, value = _kelas) 
   
+  h2 Scan QRCode
+  div(class ="qr-container")
+    video(id="qr-scanner")
+      source(src = videoScanner)
   |
   //-  DEBUG QR CODE
   if debug
