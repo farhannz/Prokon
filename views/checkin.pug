@@ -1,10 +1,6 @@
 h2 Scan QRCode
   br
   br
-  form(action="/api/checkin" method ="POST" name="qrForm")
-    input(type="text" id="QRScanData" name="QRScanData", value ="dummy", hidden)
-    input(value='QRScan', type='submit', hidden)
-
   select(id="cam-list")   
   div(class ="qr-container")
       video(playsinline autoplay muted width=400 height=400 id="localVideo")

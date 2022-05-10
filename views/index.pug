@@ -63,14 +63,18 @@ block content
   h1 Student
   |
   h2 Profile 
-  label(for="name")   Nama  :   
-  input(type="text", disabled, value = "John Doe") 
-  br
-  br
-  label(for="name")   Kelas  :   
-  input(type="text", disabled, value = _kelas) 
-  
+  form(action="/api/checkin" method ="POST" name="qrForm")
+    input(type="text" id="QRScanData" name="QRScanData", value ="dummy",readonly , hidden)
+    
+    label(for="nameStudent")   Nama  :   
+    input(type="text", id="nameStudent" ,name="nameStudent" ,readonly , value = "John Doe") 
+    br
+    br
+    label(for="classStudent")   Kelas  :   
+    input(type="text",id = "classStudent", name="classStudent",readonly , value = _kelas) 
+    input(value='QRScan', type='submit', hidden)
   include checkin.pug
+  |
   //-  DEBUG QR CODE
   if debug
     h3 Get QRCode

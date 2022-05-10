@@ -6,7 +6,9 @@ var bcrypt = require('bcryptjs');
 
 var router = express.Router();
 
-
+var client = mongodb.MongoClient;
+var url = "mongodb://127.0.0.1:27017/"
+var dbName = "sysAttendance_Dev";
 // router.use('/generate', (err,req,res,next) => {
 //   res.status(400).send("Bad Request!");
 // });
@@ -45,10 +47,6 @@ function generateQR(req,res,next){
             // 
             // TO DO : Add/Update qrcode uri in the database
             // 
-            var client = mongodb.MongoClient;
-            var url = "mongodb://127.0.0.1:27017/"
-            var dbName = "sysAttendance_Dev";
-
             client.connect(url, function(err,db){
                 if(err)
                     res.redirect(400, "/");
@@ -90,9 +88,7 @@ router.post('/generate', generateQR);
 
 router.get('/generate/:id', function(req,res, next){
     console.log(req.ip)
-    var client = mongodb.MongoClient;
-    var url = "mongodb://127.0.0.1:27017/"
-    var dbName = "sysAttendance_Dev";
+
     var response = {
         status: 'none',
         uri: ""
@@ -109,12 +105,6 @@ router.get('/generate/:id', function(req,res, next){
             if(data){
                 response.status = 'ok'
                 response.uri = data.uri
-                decode = {
-                    Angkatan : data.angkatan,
-                    Pilihan : data.pilihan,
-                    Kelas   : data.kelas
-                }
-                console.log(bcrypt.compareSync(JSON.stringify(decode),data.secured))
                 res.json(response)
             }
             else res.send({})
@@ -124,8 +114,15 @@ router.get('/generate/:id', function(req,res, next){
 })
 
 router.post("/checkin", function(req,res,next){
+
     console.log(req.ip)
     var payload = req.body;
+    // decode = {
+    //     Angkatan : req.angkatan,
+    //     Pilihan : data.pilihan,
+    //     Kelas   : data.kelas
+    // }
+    // console.log(bcrypt.compareSync(JSON.stringify(decode),data.secured))
     res.json(payload)
 });
 module.exports = router;

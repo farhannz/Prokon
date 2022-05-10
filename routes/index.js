@@ -19,10 +19,10 @@ router.get('/', function(req, res, next) {
   req.session.kelas = req.query.Angkatan+req.query.Pilihan+req.query.Kelas;
   // Debug
   if(!Object.keys(req.query).length) req.session.kelas = "10IPA1"
-  // console.log(req.query)
+  console.log(Object.keys(req.query).length)
 
   
-  // console.log(req.session.kelas)
+  console.log(req.session.kelas)
   // qrcode : get uri from db
   var qrcode = "";
   const fetchedData = fetch('http://localhost:3000/api/generate/' + req.session.kelas)
