@@ -8,13 +8,76 @@ block content
   form(action="/api/generate", method="POST")
     p
       | Generate QR Code 
-      br
-      input(type="text", name="QRData", value="Test")  
+      br 
+      br 
+      label(for="Angkatan")   Angkatan  :   
+      select(name="Angkatan",id="Angkatan")
+        each angkatan in angkatanData
+          option=angkatan
+      label(for="Pilihan")  Pilihan  :    
+
+      select(name="Pilihan",id="Pilihan")  
+        each pilihan in pilihanData 
+          option=pilihan
+      label(for="Kelas")  Kelas  :    
+      select(name="Kelas",id="Kelas")
+        each kelas in kelasData 
+          option=kelas
       |
+
+      p(id="gabunganKelas")
+    script.
+    
+      var gabungan = document.getElementById('gabunganKelas')
+
+      var angkatanData = document.getElementById('Angkatan');
+      var angkatanSelected = angkatanData.value;
+      var pilihanData = document.getElementById('Pilihan'); 
+      var pilihanSelected = pilihanData.value;
+      var kelasData = document.getElementById('Kelas'); 
+      var kelasSelected = kelasData.value;
+
+      angkatanData.addEventListener('change', function(event) {
+        angkatanSelected = angkatanData.value;
+        gabungan.innerHTML = angkatanSelected + " " + pilihanSelected + " " + kelasSelected;
+      })
+      pilihanData.addEventListener('change', function(event) {
+        pilihanSelected = pilihanData.value;
+        gabungan.innerHTML = angkatanSelected + " " + pilihanSelected + " " + kelasSelected;
+      })
+
+      kelasData.addEventListener('change', function(event) {
+        kelasSelected = kelasData.value;
+        gabungan.innerHTML = angkatanSelected + " " + pilihanSelected + " " + kelasSelected;
+      })
+
+      gabungan.innerHTML = angkatanSelected + " " + pilihanSelected + " " + kelasSelected;
     input(value='Generate', type='submit')
   |
-  div(class="qr") QR
-    #{qrcode}
+  br
   h1 Student
+  |
+  h3 Get QRCode
+  |
+  label(for="Angkatan")   Angkatan  :   
+  select(name="Angkatan",id="Angkatan")
+    each angkatan in angkatanData
+      option=angkatan
+  label(for="Pilihan")  Pilihan  :    
+
+  select(name="Pilihan",id="Pilihan")  
+    each pilihan in pilihanData 
+      option=pilihan
+  label(for="Kelas")  Kelas  :    
+  select(name="Kelas",id="Kelas")
+    each kelas in kelasData 
+      option=kelas
+  |
+  p(id="gabunganKelas")
+
+  div(class="qr") Generated QR
+  |
+  br
+  img(src = qrcode, width = 300, height = 300)
   |
   |
