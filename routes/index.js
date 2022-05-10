@@ -13,7 +13,7 @@ var dummyData = {angkatan : ["10","11","12"], pilihan : ["IPA","IPS"], kelas : [
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  // console.log(req)
+  console.log(req.ip)
   req.session.kelas = "10IPA1"
 
   req.session.kelas = req.query.Angkatan+req.query.Pilihan+req.query.Kelas;

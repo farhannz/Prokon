@@ -23,16 +23,16 @@ function generateQR(req,res,next){
         - Secure QRCode
         - Add QRCode styling, (SMAN1 Ciawi Bogor logo)??
     */
-
+        console.log(req.ip)
     // Get Payload 
     var payload = req.body;
     var stringified = JSON.stringify(payload)
     // Stringify Payload and Encrypt it for better security
     var securePayload = bcrypt.hashSync(stringified,10)
-
-    console.log(payload)
+    
+    // console.log(payload)
     payload["time"] = Date.now(); //Milisecond
-    console.log(securePayload)
+    // console.log(securePayload)
     var response = {status : "none", uri : "none"};
     qr.toDataURL(securePayload, {width : 400, height: 400},function(err,uri){
         if(err){
@@ -89,7 +89,7 @@ function generateQR(req,res,next){
 router.post('/generate', generateQR);
 
 router.get('/generate/:id', function(req,res, next){
-    
+    console.log(req.ip)
     var client = mongodb.MongoClient;
     var url = "mongodb://127.0.0.1:27017/"
     var dbName = "sysAttendance_Dev";
@@ -123,7 +123,8 @@ router.get('/generate/:id', function(req,res, next){
     
 })
 
-router.post("/scan", function(req,res,next){
+router.post("/checkin", function(req,res,next){
+    console.log(req.ip)
     var payload = req.body;
     res.json(payload)
 });
