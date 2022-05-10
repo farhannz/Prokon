@@ -1,6 +1,7 @@
 var express = require('express');
 const { METHODS } = require('http');
 var qr = require('qrcode');
+
 var router = express.Router();
 var fetch = require('node-fetch')
 
@@ -9,17 +10,26 @@ var dummyData = {angkatan : ["10","11","12"], pilihan : ["IPA","IPS"], kelas : [
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  console.log(req.body)
+  // console.log(req)
+  req.session.kelas = "10IPA1"
+
+  req.session.kelas = req.query.Angkatan+req.query.Pilihan+req.query.Kelas;
+  // Debug
+  if(!Object.keys(req.query).length) req.session.kelas = "10IPA1"
+  console.log(req.query)
+
+  
+  // console.log(req.session.kelas)
   // qrcode : get uri from db
   var qrcode = "";
-  const fetchedData = fetch('http://localhost:3000/api/generate/10IPA1')
+  const fetchedData = fetch('http://localhost:3000/api/generate/' + req.session.kelas)
     .then(res => res.json())
     .then(json => {
       return json;
     });
   
   // console.log(fetchedData)
-  
+  req.session
   const m_render = () => {
     fetchedData.then((json)=>{
       // console.log(json)
@@ -30,7 +40,9 @@ router.get('/', function(req, res, next) {
         qrcode        : qrcode ,
         angkatanData  : dummyData.angkatan,
         pilihanData   : dummyData.pilihan,
-        kelasData     : dummyData.kelas
+        kelasData     : dummyData.kelas,
+        reqBody       : req.body.Angkatan,
+        _kelas        : req.session.kelas
       });
     })
   }

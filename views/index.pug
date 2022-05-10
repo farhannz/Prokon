@@ -5,7 +5,7 @@ block content
   h1= title
   p Welcome to #{title}
   
-  
+  p !{reqBody}
   if debug 
     p #{textDebug}
   h1 Admin 
@@ -62,24 +62,38 @@ block content
   br
   h1 Student
   |
-  h3 Get QRCode
+  h2 Profile 
+  label(for="name")   Nama  :   
+  input(type="text", disabled, value = "John Doe") 
+  br
+  br
+  label(for="name")   Kelas  :   
+  input(type="text", disabled, value = _kelas) 
+  
   |
-  label(for="Angkatan")   Angkatan  :   
-  select(name="Angkatan",id="Angkatan")
-    each angkatan in angkatanData
-      option=angkatan
-  label(for="Pilihan")  Pilihan  :    
+  //-  DEBUG QR CODE
+  if debug
+    h3 Get QRCode
+    |
+    form(action="/", method="GET")
+      label(for="Angkatan")   Angkatan  :   
+      select(name="Angkatan",id="Angkatan")
+        each angkatan in angkatanData
+          option=angkatan
+      label(for="Pilihan")  Pilihan  :    
 
-  select(name="Pilihan",id="Pilihan")  
-    each pilihan in pilihanData 
-      option=pilihan
-  label(for="Kelas")  Kelas  :    
-  select(name="Kelas",id="Kelas")
-    each kelas in kelasData 
-      option=kelas
+      select(name="Pilihan",id="Pilihan")  
+        each pilihan in pilihanData 
+          option=pilihan
+      label(for="Kelas")  Kelas  :    
+      select(name="Kelas",id="Kelas")
+        each kelas in kelasData 
+          option=kelas
+      br
+      br
+      input(value='Get QR', type='submit')
   |
-  p(id="gabunganKelas")
-
+  br
   div(class="qr") Generated QR
   |
   br
