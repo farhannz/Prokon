@@ -3,12 +3,13 @@ var express = require('express');
 var mongodb = require('mongodb');
 const { timeStamp } = require('console');
 var bcrypt = require('bcryptjs');
-
+const dotenv = require('dotenv');
+dotenv.config({ debug: true });
 var router = express.Router();
 
 var client = mongodb.MongoClient;
-var url = "mongodb://127.0.0.1:27017/"
-var dbName = "sysAttendance_Dev";
+var url = process.env.DB_URL;
+var dbName = process.env.DB_NAME;
 // router.use('/generate', (err,req,res,next) => {
 //   res.status(400).send("Bad Request!");
 // });
@@ -26,6 +27,7 @@ function generateQR(req,res,next){
         - Add QRCode styling, (SMAN1 Ciawi Bogor logo)??
     */
         console.log(req.ip)
+        console.log("req.body")
     // Get Payload 
     var payload = req.body;
     var stringified = JSON.stringify(payload)
