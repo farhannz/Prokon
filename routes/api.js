@@ -3,8 +3,7 @@ var express = require('express');
 var mongodb = require('mongodb');
 const { timeStamp } = require('console');
 var bcrypt = require('bcryptjs');
-const dotenv = require('dotenv');
-dotenv.config({ debug: true });
+require('../helpers/dotenv');
 var router = express.Router();
 
 var client = mongodb.MongoClient;

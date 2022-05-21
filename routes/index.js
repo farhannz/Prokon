@@ -6,10 +6,7 @@ var router = express.Router();
 var fetch = require('node-fetch');
 const { default: adapter } = require('webrtc-adapter');
 
-
-
 var dummyData = {angkatan : ["10","11","12"], pilihan : ["IPA","IPS"], kelas : ["1","2","3","4"]}
-
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
