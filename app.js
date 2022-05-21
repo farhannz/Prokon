@@ -6,7 +6,9 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
 var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
+var studentRouter = require('./routes/student');
+var adminRouter = require('./routes/admin');
+
 var api = require("./routes/api");
 const session = require('express-session');
 const { default: jsQR } = require('jsqr');
@@ -26,7 +28,8 @@ app.use(session({secret : "Ini adalah kunci rahasia dari session!"}))
 
 
 app.use('/', indexRouter);
-app.use('/users', usersRouter);
+app.use('/students', studentRouter);
+app.use('/admin', adminRouter);
 app.use('/api', api, (req, res) => {
   if(!Object.keys(req.body).length) res.sendStatus(400);
 })
