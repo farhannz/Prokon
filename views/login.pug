@@ -1,0 +1,16 @@
+extends layout
+
+block content 
+    form(action=_apiUrl, method="POST")
+        
+        if failedLogin
+            p Incorrect credentials. Try Again!
+        if _apiUrl === '/admin/login'
+            input(type="email" id="email" name="email" placeholder="something@email.com" required)
+        else if _apiUrl === '/students/login'
+            input(type="text" id="nis" name="nis" placeholder="example : 1904908" required)
+        br
+        input(type="password" id="password" name="password" placeholder="password" requried)
+        br
+        input(type="submit" value="Login")
+        

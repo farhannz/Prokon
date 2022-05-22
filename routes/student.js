@@ -8,13 +8,25 @@ const {
   createStudent, 
   studentLogin, 
   getStudentByNIS, 
-  updateStudentByNIS 
+  updateStudentByNIS,
+  checkInStudent 
 } = require('../handlers/StudentHandler');
 
-router.get('/', getAllStudents);
-router.post('/', authorize(Role.Admin), createStudent)
+router.get('/login', function(req,res,next){
+  if(!req.cookies.token){
+    res.render('login', {
+      _apiUrl : '/students/login'
+    })
+}
+else{
+    res.redirect(301,'/')
+}
+});
 router.post('/login', studentLogin);
+
+router.get('/',authorize(Role.Admin), getAllStudents);
+router.post('/', authorize(Role.Admin), createStudent)
 router.get('/:nis', authorize([Role.Admin, Role.Student]), getStudentByNIS);
 router.patch('/:nis', authorize([Role.Admin, Role.Student]), updateStudentByNIS);
-
+router.post('/checkin', authorize(Role.Student), checkInStudent);
 module.exports = router;

@@ -46,7 +46,7 @@ h2 Scan QRCode
               highlightScanRegion: true,
               highlightCodeOutline: true,
           });
-
+          //- scanner.setCamera()
           
           scanner.start().then(() => {
             QrScanner.listCameras(true).then(cameras => cameras.forEach(camera => {
@@ -56,6 +56,8 @@ h2 Scan QRCode
                 camList.add(option);
             }));
           });
+
+          //- scanner.setCamera()
 
           camList.addEventListener('change', event => {
             scanner.setCamera(event.target.value);

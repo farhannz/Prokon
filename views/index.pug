@@ -7,67 +7,78 @@ block content
   
   p !{reqBody}
   if debug 
-    p #{textDebug}
-  h1 Admin 
-  |
-  form(action="/api/generate", method="POST")
-    p
-      | Generate QR Code 
-      br 
-      br 
-      label(for="Angkatan")   Angkatan  :   
-      select(name="Angkatan",id="Angkatan")
-        each angkatan in angkatanData
-          option=angkatan
-      label(for="Pilihan")  Pilihan  :    
+    pre
+      p #{textDebug}
+      if role === ""
+        a(href="/admin/login") Admin login
+        br
+        a(href="/students/login") Students login
 
-      select(name="Pilihan",id="Pilihan")  
-        each pilihan in pilihanData 
-          option=pilihan
-      label(for="Kelas")  Kelas  :    
-      select(name="Kelas",id="Kelas")
-        each kelas in kelasData 
-          option=kelas
-      |
+  if role !== "" 
+    form(action="/logout", method="post")
+      input(type="submit" value="Logout")
 
-      p(id="gabunganKelas")
-    script.
-    
-      var gabungan = document.getElementById('gabunganKelas')
+  if role === 'Admin'
+    h1 Admin 
+    |
+    form(action="/api/generate", method="POST")
+      p
+        | Generate QR Code 
+        br 
+        br 
+        label(for="Angkatan")   Angkatan  :   
+        select(name="Angkatan",id="Angkatan")
+          each angkatan in angkatanData
+            option=angkatan
+        label(for="Pilihan")  Pilihan  :    
 
-      var angkatanData = document.getElementById('Angkatan');
-      var angkatanSelected = angkatanData.value;
-      var pilihanData = document.getElementById('Pilihan'); 
-      var pilihanSelected = pilihanData.value;
-      var kelasData = document.getElementById('Kelas'); 
-      var kelasSelected = kelasData.value;
+        select(name="Pilihan",id="Pilihan")  
+          each pilihan in pilihanData 
+            option=pilihan
+        label(for="Kelas")  Kelas  :    
+        select(name="Kelas",id="Kelas")
+          each kelas in kelasData 
+            option=kelas
+        |
 
-      angkatanData.addEventListener('change', function(event) {
-        angkatanSelected = angkatanData.value;
+        p(id="gabunganKelas")
+      script.
+      
+        var gabungan = document.getElementById('gabunganKelas')
+
+        var angkatanData = document.getElementById('Angkatan');
+        var angkatanSelected = angkatanData.value;
+        var pilihanData = document.getElementById('Pilihan'); 
+        var pilihanSelected = pilihanData.value;
+        var kelasData = document.getElementById('Kelas'); 
+        var kelasSelected = kelasData.value;
+
+        angkatanData.addEventListener('change', function(event) {
+          angkatanSelected = angkatanData.value;
+          gabungan.innerHTML = angkatanSelected + " " + pilihanSelected + " " + kelasSelected;
+        })
+        pilihanData.addEventListener('change', function(event) {
+          pilihanSelected = pilihanData.value;
+          gabungan.innerHTML = angkatanSelected + " " + pilihanSelected + " " + kelasSelected;
+        })
+
+        kelasData.addEventListener('change', function(event) {
+          kelasSelected = kelasData.value;
+          gabungan.innerHTML = angkatanSelected + " " + pilihanSelected + " " + kelasSelected;
+        })
+
         gabungan.innerHTML = angkatanSelected + " " + pilihanSelected + " " + kelasSelected;
-      })
-      pilihanData.addEventListener('change', function(event) {
-        pilihanSelected = pilihanData.value;
-        gabungan.innerHTML = angkatanSelected + " " + pilihanSelected + " " + kelasSelected;
-      })
-
-      kelasData.addEventListener('change', function(event) {
-        kelasSelected = kelasData.value;
-        gabungan.innerHTML = angkatanSelected + " " + pilihanSelected + " " + kelasSelected;
-      })
-
-      gabungan.innerHTML = angkatanSelected + " " + pilihanSelected + " " + kelasSelected;
-    input(value='Generate', type='submit')
-  |
+      input(value='Generate', type='submit')
+    |
   br
   h1 Student
   |
   h2 Profile 
-  form(action="/api/checkin" method ="POST" name="qrForm")
+  form(action="/students/checkin" method ="POST" name="qrForm")
     input(type="text" id="QRScanData" name="QRScanData", value ="dummy",readonly , hidden)
     
     label(for="nameStudent")   Nama  :   
-    input(type="text", id="nameStudent" ,name="nameStudent" ,readonly , value = "John Doe") 
+    input(type="text", id="nameStudent" ,name="nameStudent" ,readonly , value = _nama) 
     br
     br
     label(for="classStudent")   Kelas  :   

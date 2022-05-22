@@ -4,8 +4,13 @@ require('./dotenv');
 function authorize(roles = []) {
     return function (req, res, next) {
         const authHeader = req.headers['authorization'];
-        const token = authHeader && authHeader.split(' ')[1];
-    
+        console.log("====JWT=====")
+        console.log(authHeader)
+        // const token = authHeader && authHeader.split(' ')[1];
+        const token = req.cookies.token
+        console.log(authHeader && authHeader.split(' ')[1])
+        // console.log({token, authHeader})
+        // console.log("asdasd" + authHeader)
         if (token == null) return res.sendStatus(401);
         
         // roles param can be a single role string (e.g. Role.User or 'User') 
@@ -13,13 +18,14 @@ function authorize(roles = []) {
         if (typeof roles === 'string') {
             roles = [roles];
         }
+        const { nis, role } = jwt.verify(token, process.env.SECRET);
 
-        const { email, role } = jwt.verify(token, process.env.SECRET);
 
+        console.log("debug - jwt : " + role + " - " + roles)
         if (!roles.includes(role)) {
             return res.status(401).send({ message: 'You are not authorized to access this resource' });
         } else {
-            req.user = { email, role };
+            req.user = { nis, role };
             next();
         }
     }

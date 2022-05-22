@@ -15,6 +15,16 @@ const { default: jsQR } = require('jsqr');
 
 var app = express();
 
+// function requireHTTPS(req, res, next) {
+//   // The 'x-forwarded-proto' check is for Heroku
+//   if (!req.secure && req.get('x-forwarded-proto') !== 'https' && process.env.NODE_ENV !== "development") {
+//     return res.redirect('https://' + req.get('host').replace(':3000','') + req.url);
+//   }
+//   next();
+// }
+
+// app.use(requireHTTPS)
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
@@ -24,7 +34,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(session({secret : "Ini adalah kunci rahasia dari session!"}))
+app.use(session({secret : "Ini adalah kunci rahasia dari session!", httpOnly: true, secure: true}))
 
 
 app.use('/', indexRouter);
@@ -48,5 +58,8 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
+
+
+
 
 module.exports = app;

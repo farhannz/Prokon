@@ -26,7 +26,7 @@ const absence = function(req, res) {
 
 const getAllStudentsAbsences = function(req, res) {
     try{
-        Absence.find({}, function(err, data){
+        Absence.find({},{_id : 0}, function(err, data){
             if(err)
                 res.send(err);
             res.send(data);
@@ -40,7 +40,7 @@ const getStudentAbsencesByNIS = function(req, res) {
     const nis = req.params.nis;
     console.log(nis)
     try {
-        Student.findOne({ nis }, function(err, student) {
+        Student.findOne({ nis }, {_id : 0},function(err, student) {
             Absence.find({ studentId: student._id }, function(err, absences) {
                 if(err)
                     res.send(err);
