@@ -36,7 +36,7 @@ jobs:
     - name: create key
       run: |
         touch key.pem
-        echo asd >> key.pem
+        echo ${{secrets.KEY}} >> key.pem
     - name: create cert
       run: |
         touch certificate.crt
