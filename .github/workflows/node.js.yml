@@ -21,26 +21,23 @@ jobs:
         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
 
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v2
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v3
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
     - name: create env file
-      uses: actions/checkout@v3
       run: |
         touch .env
         echo DB_URL=${{ secrets.DB_URL }} >> .env
         echo DB_NAME=${{ secrets.DB_NAME }} >> .env
         echo SECRET=${{ secrets.SECRET }} >> .env
     - name: create key
-      uses: actions/checkout@v3
       run: |
         touch key.pem
         echo ${{secrets.KEY}} >> key.pem
     - name: create cert
-      uses: actions/checkout@v3
       run: |
         touch certificate.crt
         echo ${{secrets.CERT}} >> certificate.crt 
