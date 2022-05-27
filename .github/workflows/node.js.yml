@@ -35,13 +35,12 @@ jobs:
         echo SECRET=${{ secrets.SECRET }} >> .env
     - name: create key
       run: |
-        mkdir keys/
-        touch keys/key.pem
-        echo ${{secrets.KEY}} >> keys/key.pem
+        touch key.pem
+        echo ${{secrets.KEY}} >> key.pem
     - name: create cert
       run: |
-        touch keys/certificate.crt
-        echo ${{secrets.CERT}} >> keys/keys/certificate.crt 
+        touch certificate.crt
+        echo ${{secrets.CERT}} >> certificate.crt 
     - run: npm ci
     - run: npm run build --if-present
     - run: npm test
