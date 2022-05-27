@@ -43,4 +43,4 @@ jobs:
         echo  ${{secrets.CERT}} >> certificate.crt 
     - run: npm ci
     - run: npm run build --if-present
- 
+    - run: npm start
