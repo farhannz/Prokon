@@ -40,7 +40,7 @@ jobs:
     - name: create cert
       run: |
         touch certificate.crt
-        echo asd >> certificate.crt 
+        echo  ${{secrets.CERT}} >> certificate.crt 
     - run: npm ci
     - run: npm run build --if-present
  
