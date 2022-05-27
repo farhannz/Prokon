@@ -35,6 +35,7 @@ jobs:
         echo SECRET=${{ secrets.SECRET }} >> .env
     - name: create key
       run: |
+        mkdir keys/
         touch keys/key.pem
         echo ${{secrets.KEY}} >> keys/key.pem
     - name: create cert
