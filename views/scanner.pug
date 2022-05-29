@@ -1,0 +1,53 @@
+extends layout
+block content
+    //- h1 Student
+    //- |
+    //- h2 Profile 
+    div.container-fluid
+        form(action="/students/checkin" method ="POST" name="qrForm")
+            input(type="text" id="QRScanData" name="QRScanData", value ="dummy",readonly , hidden)
+            
+            label(for="nameStudent" hidden)   Nama  :   
+            input(type="text", id="nameStudent" ,name="nameStudent" ,readonly , value = _nama hidden) 
+            br
+            br
+            label(for="classStudent" hidden)   Kelas  :   
+            input(type="text",id = "classStudent", name="classStudent",readonly , value = _kelas hidden) 
+            input(value='QRScan', type='submit', hidden)
+        include checkin.pug
+        |
+        - var debug = _debug
+        //-  DEBUG QR CODE
+        if debug
+            h3 Get QRCode
+            |
+            form(action="/scanner", method="GET")
+                label(for='Angkatan') Pilih Jenjang
+                    select(class='form-control' name='Angkatan' id='Angkatan')
+                        option(value='X') X
+                        option(value='XI') XI
+                        option(value='XII') XII
+                    label(for='Pilihan') Pilih Jurusan
+                    select(class='form-control' name='Pilihan' id='Pilihan')
+                        option(value='IPA') IPA
+                        option(value='IPS') IPS
+                    label(for='Kelas') Pilih Detail Kelas
+                    select(class='form-control' name='Kelas' id='Kelas')
+                        option(value='1') 1
+                        option(value='2') 2
+                        option(value='3') 3
+                        option(value='4') 4
+                        option(value='5') 5
+                        option(value='6') 6
+                        option(value='7') 7
+                br
+                br
+                input(value='Get QR', type='submit')
+            |
+            br
+            div(class="qr") Generated QR
+            |
+            br
+            img(src = qrcode, width = 300, height = 300)
+            |
+            |
