@@ -15,7 +15,8 @@ const {
 router.get('/login', function(req,res,next){
   if(!req.cookies.token){
     res.render('login', {
-      _apiUrl : '/students/login'
+      _apiUrl : '/students/login',
+      role : ""
     })
 }
 else{

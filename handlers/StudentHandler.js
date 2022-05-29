@@ -62,8 +62,8 @@ const studentLogin = function(req, res) {
     try{
         Student.findOne({ nis: req.body.nis})
         .then(student => {
-          console.log(req.body)
-          console.log(student.class_id)
+          //console.log(req.body)
+          //console.log(student.class_id)
             if(student){
               if(bcrypt.compareSync(req.body.password,student.password)){
                 const token = jwt.sign({

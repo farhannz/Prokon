@@ -1,0 +1,297 @@
+extends layout 
+block content
+    // Section carousel
+    section#hero-area
+      #slider-hero-nav
+      #slider-hero.owl-carousel
+        .slider-item
+          .slider-item-img
+            img(src='/assets/Rectangle.png', alt='')
+          .slider-item-content
+            h2 Belajar dari Rumah Melalui Pembelajaran Jarak
+            h2 Jauh
+            br
+            a.btn.btn-primary.btn-lg.active(href='#', style='background-color: #FE4A55; border-radius: 10px;') Mulai Belajar
+        .slider-item
+          .slider-item-img
+            img(src='/assets/Rectangle.png', alt='')
+          .slider-item-content
+            h2 Tittle
+            br
+            a.btn.btn-primary.btn-lg.active(href='#', style='background-color: #FE4A55; border-radius: 10px;') Button
+    section#profil
+      .container
+        h2 Profil SMAN 1 Ciawi
+        .row
+          .col-md-6
+            .video-wrapper
+              iframe(width='560', height='315', src='https://www.youtube.com/embed/IN5AwXq4UpM', title='YouTube video player', frameborder='0', allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture', allowfullscreen='')
+          .col-md-6
+            p
+              | SMA Negeri 1 Ciawi Kecamatan Ciawi Kabupaten Bogor, berasal dari SMA Negeri 2 Bogor Filial di Ciawi,
+              | berdiri diatas tanah seluas 5920 M2 dari Pemerintah Daerah Kabupaten Bogor. Mulai dibangun pada tahun 1975
+              | terdiri dari 6 ruang kelas, 1 ruang kantor termasuk ruang Kepala Sekolah dan Guru, ruang Tata Usaha dan
+              | kamar mandi / wc, diprakarsai oleh Camat Kecamatan Ciawi yaitu T. Badru Kamal (sekarang Drs. H. T. Badru Kamal,
+              | MM menjabat sebagai Wali Kota Depok), juga prakarsa Kepala SMP Negeri 1 Ciawi (E.Sukardja) beserta jajarannya
+              | serta dukungan masyarakat Ciawi dan sekitarnya.
+            a.btn.btn-primary.btn-lg.active(href='#', style='background-color: #FE4A55; border-radius: 10px; margin-left: 15px;') Baca Selengkapnya
+    section#prestasi
+      .container
+        .section-tittle
+          h2 Prestasi Siswa
+        .section-item
+          .row
+            .col-md-6
+              img.section-item-thumbnail(src='/assets/Rectangle.png', alt='')
+            .col-md-6
+              .section-item-tittle
+                a.text-decoration-none(href='#detail-prestasi.html')
+                  h3 Juara 1 Olimpiade Sains Nasional
+                .section-item-meta
+                  span
+                    i.fas.fa-calendar-alt
+                    | 13 Agustus 2019
+                  span
+                    i.fas.fa-map-marked-alt
+                    | Manado, Sulawesi Utara, Indonesia
+              .section-item-body
+                p
+                  | Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                  | Lorem Ipsum has been the industry&apos;s standard dummy text ever since the 1500s, \
+                  | when an unknown printer took a galley of type and scrambled it to make a type
+                  | specimen book. It has survived not only five centuries, but also the leap into
+                  | electronic typesetting, remaining essentially unchanged...
+        .section-item
+          .row
+            .col-md-6
+              img.section-item-thumbnail(src='/assets/Rectangle.png', alt='')
+            .col-md-6
+              .section-item-tittle
+                a.text-decoration-none(href='#detail-prestasi.html')
+                  h3 Juara 1 Olimpiade Sains Nasional
+                .section-item-meta
+                  span
+                    i.fas.fa-calendar-alt
+                    | 13 Agustus 2019
+                  span
+                    i.fas.fa-map-marked-alt
+                    | Manado, Sulawesi Utara, Indonesia
+              .section-item-body
+                p
+                  | Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                  | Lorem Ipsum has been the industry&apos;s standard dummy text ever since the 1500s, \
+                  | when an unknown printer took a galley of type and scrambled it to make a type
+                  | specimen book. It has survived not only five centuries, but also the leap into
+                  | electronic typesetting, remaining essentially unchanged...
+        .section-item
+          .row
+            .col-md-6
+              img.section-item-thumbnail(src='/assets/Rectangle.png', alt='')
+            .col-md-6
+              .section-item-tittle
+                a.text-decoration-none(href='#detail-prestasi.html')
+                  h3 Juara 1 Olimpiade Sains Nasional
+                .section-item-meta
+                  span
+                    i.fas.fa-calendar-alt
+                    | 13 Agustus 2019
+                  span
+                    i.fas.fa-map-marked-alt
+                    | Manado, Sulawesi Utara, Indonesia
+              .section-item-body
+                p
+                  | Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                  | Lorem Ipsum has been the industry&apos;s standard dummy text ever since the 1500s, \
+                  | when an unknown printer took a galley of type and scrambled it to make a type
+                  | specimen book. It has survived not only five centuries, but also the leap into
+                  | electronic typesetting, remaining essentially unchanged...
+        .button-selengkapnya
+          a.btn.btn-primary.btn-lg.active(href='#', style='background-color: #FE4A55; border-radius: 10px;') Prestasi Lainnya
+    section#ekskul
+      .container
+        .section-tittle
+          h2 Ekstrakurikuler
+        .section-body
+          .row
+            .col-md-4
+              .section-body-item
+                .row.row-2
+                  .col-md-3
+                    i.fa-solid.fa-futbol
+                  .col-md-9
+                    h4 Sepakbola dan Futsal
+            .col-md-4
+              .section-body-item
+                .row.row-2
+                  .col-md-3
+                    i.fa-brands.fa-pied-piper-hat
+                  .col-md-9
+                    h4 Paraja Muda Karana (Pramuka)
+            .col-md-4
+              .section-body-item
+                .row.row-2
+                  .col-md-3
+                    i.fa-solid.fa-basketball
+                  .col-md-9
+                    h4 Bola Basket
+          .row
+            .col-md-4
+              .section-body-item
+                .row.row-2
+                  .col-md-3
+                    i.fa-brands.fa-pied-piper-hat
+                  .col-md-9
+                    h4 Paraja Muda Karana (Pramuka)
+            .col-md-4
+              .section-body-item
+                .row.row-2
+                  .col-md-3
+                    i.fa-brands.fa-pied-piper-hat
+                  .col-md-9
+                    h4 Paraja Muda Karana (Pramuka)
+            .col-md-4
+              .section-body-item
+                .row.row-2
+                  .col-md-3
+                    i.fa-brands.fa-pied-piper-hat
+                  .col-md-9
+                    h4 Paraja Muda Karana (Pramuka)
+        br
+        br
+        br
+        .button-selengkapnya
+          a.btn.btn-primary.btn-lg.active(href='#', style='background-color: #FE4A55; border-radius: 10px;') Ekskul Lainnya
+    section#berita
+      .container
+        .section-tittle
+          h2 Berita
+        .section-body
+          .row
+            .col-md-4
+              .section-thumbnail
+                img(src='/assets/Rectangle.png', alt='')
+                .tanggal
+                  span.tgl 15
+                  span.tgl-2 Mei 2022
+              .section-content
+                a.text-decoration-none(href='')
+                  h3 Penghargaan Kelas Terbaik
+                p
+                  | Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                  | Lorem Ipsum has been the industry&apos;s standard dummy text ever since the 1500s....
+            .col-md-4
+              .section-thumbnail
+                img(src='/assets/Rectangle.png', alt='')
+                .tanggal
+                  span.tgl 15
+                  span.tgl-2 Mei 2022
+              .section-content
+                a.text-decoration-none(href='')
+                  h3 Penghargaan Kelas Terbaik
+                p
+                  | Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                  | Lorem Ipsum has been the industry&apos;s standard dummy text ever since the 1500s....
+            .col-md-4
+              .section-thumbnail
+                img(src='/assets/Rectangle.png', alt='')
+                .tanggal
+                  span.tgl 15
+                  span.tgl-2 Mei 2022
+              .section-content
+                a.text-decoration-none(href='')
+                  h3 Penghargaan Kelas Terbaik
+                p
+                  | Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                  | Lorem Ipsum has been the industry&apos;s standard dummy text ever since the 1500s....
+          .row
+            .col-md-4
+              .section-thumbnail
+                img(src='/assets/Rectangle.png', alt='')
+                .tanggal
+                  span.tgl 15
+                  span.tgl-2 Mei 2022
+              .section-content
+                a.text-decoration-none(href='')
+                  h3 Penghargaan Kelas Terbaik
+                p
+                  | Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                  | Lorem Ipsum has been the industry&apos;s standard dummy text ever since the 1500s....
+            .col-md-4
+              .section-thumbnail
+                img(src='/assets/Rectangle.png', alt='')
+                .tanggal
+                  span.tgl 15
+                  span.tgl-2 Mei 2022
+              .section-content
+                a.text-decoration-none(href='')
+                  h3 Penghargaan Kelas Terbaik
+                p
+                  | Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                  | Lorem Ipsum has been the industry&apos;s standard dummy text ever since the 1500s....
+            .col-md-4
+              .section-thumbnail
+                img(src='/assets/Rectangle.png', alt='')
+                .tanggal
+                  span.tgl 15
+                  span.tgl-2 Mei 2022
+              .section-content
+                a.text-decoration-none(href='')
+                  h3 Penghargaan Kelas Terbaik
+                p
+                  | Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                  | Lorem Ipsum has been the industry&apos;s standard dummy text ever since the 1500s....
+        br
+        br
+        br
+        .button-selengkapnya
+          a.btn.btn-primary.btn-lg.active(href='#', style='background-color: #FE4A55; border-radius: 10px;') Berita Lainnya
+    section#gallery
+      .container
+        .section-tittle
+          h2 Gallery
+        .section-body
+          .row
+            .col-md-4
+              .section-thumbnail
+                img(src='/assets/Rectangle.png', alt='')
+              .section-content
+                p Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+            .col-md-4
+              .section-thumbnail
+                img(src='/assets/Rectangle.png', alt='')
+              .section-content
+                p Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+            .col-md-4
+              .section-thumbnail
+                img(src='/assets/Rectangle.png', alt='')
+              .section-content
+                p Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+          .row
+            .col-md-4
+              .section-thumbnail
+                img(src='/assets/Rectangle.png', alt='')
+              .section-content
+                p Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+            .col-md-4
+              .section-thumbnail
+                img(src='/assets/Rectangle.png', alt='')
+              .section-content
+                p Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+            .col-md-4
+              .section-thumbnail
+                img(src='/assets/Rectangle.png', alt='')
+              .section-content
+                p Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+        br
+        br
+        br
+        .button-selengkapnya
+          a.btn.btn-primary.btn-lg.active(href='#', style='background-color: #FE4A55; border-radius: 10px;') Gallery Lainnya
+    .btn.btn-primary.btn-sm
+            // <a href="#">Beranda</a>
+    script(src='https://code.jquery.com/jquery-3.2.1.slim.min.js', integrity='sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN', crossorigin='anonymous')
+    script(src='https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js', integrity='sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q', crossorigin='anonymous')
+    script(src='https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js', integrity='sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl', crossorigin='anonymous')
+    script(src='jquery.min.js')
+    script(src='/js/owl.carousel.min.js')
+    script(src='/js/main.js')

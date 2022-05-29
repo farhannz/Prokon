@@ -1,0 +1,137 @@
+body {
+    font-family: 'Karla', sans-serif;
+}
+#topbar {
+    background-color: #F6F1ED;
+    color: #000000;
+    height: 50px;
+    line-height: 50px;
+}
+.top-left-contact, .sosmed {
+    list-style: none;
+    text-decoration: none;
+}
+#topbar li {
+    display: inline-block;
+}
+#topbar li a {
+    color: #000000;
+    display: inline-block;
+    padding: 0px 20px 0px 30px;
+    text-decoration: none;
+}
+#topbar li a i {
+    color: #000000;
+    margin-left: 5px;
+}
+#topbar .sosmed li a {
+    padding: 0px 20px ;
+    color: #000000;
+
+}
+/* css header */
+
+header {
+    padding: 30px;
+    margin-left: 3.5%;
+}
+.brand {
+    display: flex;
+}
+.brand img {
+    margin-right: 10px;
+    width: 60px;
+    height: 70px;
+}
+.brand .brand-name h1{
+    font-size:  27px;
+    color: #000000;
+    text-transform: uppercase;
+}
+.brand .brand-name h3 {
+    font-size: 15px;
+    font-family: 'Karla', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #000000;
+}
+.searchbox-wrapper {
+    display: flex;
+    align-items: center;
+    border-radius: 10px;
+
+}
+.searchbox {
+    width: 100%;
+}
+.btn.btn-utama {
+    background-color: #FE4A55;
+    color: #ffff;
+    text-transform: capitalize;
+    border-radius: 5px;
+    font-weight: 500;
+}
+/* css menu */
+
+nav {
+    height: 68px;
+}
+.navbar {
+    padding: 0px;
+    font-size: 18px;
+    text-transform: capitalize;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+}
+.bg-warna {
+    background-color: #F6F1ED;
+    color: #000000;
+}
+.navbar-light .navbar-nav .nav-link {
+    color: #000000;
+    font-weight: 500;
+}
+.navbar-light .navbar-nav .active>.nav-link,
+.navbar-light .navbar-nav .nav-link.active,
+.navbar-light .navbar-nav .nav-link.show,
+.navbar-light .navbar-nav .show>.nav-link {
+    color: #000000;
+}
+.active {
+    color: #000000;
+}
+.nav-item {
+    padding: 0px 12%;
+    color: #000000;
+}
+
+/* css untuk detail */
+
+#detail {
+    font-family: 'Karla', sans-serif;
+    background-color: #F9F8F8;
+    opacity: 98%;
+    min-height: 330PX;
+}
+
+#detail .section-tittle h3 {
+    font-size: 30px;
+    font-weight: 600;
+    padding-top: 50px;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.section-image {
+    max-width: 100%;
+    width: 100%;
+    object-fit: cover;
+    height: 330px;
+    margin-bottom: 40px;
+}
+
+#detail .section-deskripsi p {
+    text-align: justify;
+    font-size: 18px;
+    font-weight: 200;
+}
