@@ -69,24 +69,30 @@ html
           span.navbar-toggler-icon
         .collapse.navbar-collapse(id='#navbarTogglerDemo01')
           ul.navbar-nav.mr-auto.mt-2.mt-lg-0
-            li.nav-item.active
-              a.nav-link(href='#')
-                | Beranda 
-                span.sr-only (current)
-            li.nav-item
-              a.nav-link(href='#') Profil
-            li.nav-item
-              a.nav-link(href='#') Prestasi
-            li.nav-item
-              a.nav-link(href='#') Ekskul
-            li.nav-item
-              a.nav-link(href='#') Berita
-            li.nav-item
-              a.nav-link(href='#') Gallery
-            li.nav-item
-              a.nav-link(href='/dashboard') Absensi
-            li.nav-item
-              a.nav-link(href='#') Lainnya
+            if role !== 'Admin'
+              li.nav-item.active
+                a.nav-link(href='#')
+                  | Beranda 
+                  span.sr-only (current)
+              li.nav-item
+                a.nav-link(href='#') Profil
+              li.nav-item
+                a.nav-link(href='#') Prestasi
+              li.nav-item
+                a.nav-link(href='#') Ekskul
+              li.nav-item
+                a.nav-link(href='#') Berita
+              li.nav-item
+                a.nav-link(href='#') Gallery
+              li.nav-item
+                a.nav-link(href='/dashboard') Absensi
+              li.nav-item
+                a.nav-link(href='#') Lainnya
+            else
+              li.nav-item.active
+                a.nav-link(href='/admin')
+                  | Admin 
+                  span.sr-only (current)
     block content
     footer.mt-auto
       .container-fluid

@@ -12,6 +12,7 @@ require('../helpers/dotenv');
 
 router.post('/logout',function(req,res,next){
   res.clearCookie("token")
+  res.clearCookie("kelas")
   res.redirect(301,'/')
 })
 
@@ -47,6 +48,7 @@ router.get('/', function(req, res, next) {
       kelaS = "Admin"
     }
   }
+
   const fetchedData = fetch('http://localhost:3000/api/generate/' + kelas)
     .then(res => res.json())
     .then(json => {

@@ -145,10 +145,29 @@ nav {
     color: #000000;
 }
 .section-image {
-    max-width: 100%;
+    /* max-width: 100%; */
     width: 100%;
     object-fit: cover;
     height: 200px;
     width: 200px;
     margin-bottom: 40px;
+}
+
+@media print {
+    body * {
+        visibility: hidden;
+    }
+    .section-image {
+        width: 700px;
+        height: 700px;
+    }
+    .section-to-print, .section-to-print * {
+        
+        visibility: visible;
+    }
+    .section-to-print {
+        position: absolute;
+        left: 0;
+        top: 0;
+    }
 }

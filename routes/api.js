@@ -84,10 +84,11 @@ function generateQR(req,res,next){
                 });
             });
             response["status"] = "ok"
-            response["uri"] = url;
+            res.cookie('kelas',{Angkatan:payload.Angkatan,Pilihan:payload.Pilihan,Kelas:payload.Kelas});
+            response["uri"] = uri;
             req.body = response;
-            // console.log(response["status"])
-            res.redirect(301,"/")
+            console.log(response)
+            res.redirect(301,'/admin')
         }
     });
     //   res.send(res.json(req.body));
