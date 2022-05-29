@@ -24,7 +24,7 @@ const adminLogin = function(req, res) {
                 if(token){
                   // res.header('authorization',token)
                   res.cookie('token',token,{ httpOnly: true, secure: true})
-                  res.redirect(301,'/')
+                  res.redirect(301,'/admin')
                 }
               }
               else{

@@ -1,0 +1,53 @@
+extends layout 
+block content
+    .container
+        .form-group
+            label(for='exampleFormControlSelect1') Pilih jenjang
+            select#Angkatan.form-control
+                option X
+                option XI
+                option XII
+            label(for='exampleFormControlSelect1') Pilih Jurusan
+            select#Pilihan.form-control
+                option IPA
+                option IPS
+            label(for='exampleFormControlSelect1') Pilih Detail Kelas
+            select#Kelas.form-control
+                option 1
+                option 2
+                option 3
+                option 4
+                option 5
+                option 6
+                option 7
+        script.
+      
+            var gabungan = document.getElementById('gabunganKelas')
+
+            var angkatanData = document.getElementById('Angkatan');
+            var angkatanSelected = angkatanData.value;
+            var pilihanData = document.getElementById('Pilihan'); 
+            var pilihanSelected = pilihanData.value;
+            var kelasData = document.getElementById('Kelas'); 
+            var kelasSelected = kelasData.value;
+
+            angkatanData.addEventListener('change', function(event) {
+                angkatanSelected = angkatanData.value;
+            
+            })
+            pilihanData.addEventListener('change', function(event) {
+                pilihanSelected = pilihanData.value;
+            
+            })
+
+            kelasData.addEventListener('change', function(event) {
+                kelasSelected = kelasData.value;
+            
+            })
+
+        input(class=' btn btn-primary' type='submit', value = ' Generate QR Code' style='margin-right: 20px; background-color: #FE4A55;')
+        input(class=' btn btn-primary' type='submit', value = ' Print QR Code' style='margin-right: 20px; background-color: #FE4A55;')
+        // Container qr
+        .row.justify-content-center
+            .col-md-6
+            img.section-image(src=qrcode, alt='')

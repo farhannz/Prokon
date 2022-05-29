@@ -19,27 +19,30 @@ block content
         .col-lg-6.col-md-8.col-12
           img(src='/assets/Vector 1.png', alt='', width='600px', height='600px', float='left')
         
-        .col-lg-5.col-md-5.col-10
+        .col-lg-5.col-md-5.col-10.pt-5
           .container(align='right')
-            form.php-email-form(action=_apiUrl, method='post', role='form')
-              .form-group
-                .fs-2-mb-3
-                  svg.bi.bi-person-circle(xmlns='http://www.w3.org/2000/svg', width='70', height='70', fill='currentColor', viewBox='0 0 16 16')
-                    path(d='M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z')
-                    path(fill-rule='evenodd', d='M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z')
-                br
-                h1  Welcome
-                if failedLogin
-                    p Incorrect credentials. Try Again! 
-                br
-                input(id = 'nis' name = 'nis' required type='text', placeholder='NIS')
-                br
-                br
-                br
-                input(id = 'password' name = 'password' required type='password', placeholder='Password')
-                br
-                // <p align="right">forgot username and password?</p>
-                //.form-check.form-check-inline
-                br
-                input(value = 'Login' class = " btn btn-primary btn-sm" type='submit', style='background-color: #FE4A55; padding: 0 20px 5px 20px') 
+              form.php-email-form(action=_apiUrl, method='post', role='form')
+                .form-group
+                    .fs-2-mb-3
+                    svg.bi.bi-person-circle(xmlns='http://www.w3.org/2000/svg', width='70', height='70', fill='currentColor', viewBox='0 0 16 16')
+                        path(d='M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z')
+                        path(fill-rule='evenodd', d='M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z')
+                    br
+                    h1  Welcome
+                    if failedLogin
+                        p Incorrect credentials. Try Again! 
+                    br
+                    if _apiUrl === '/admin/login'
+                      input(type="email" id="email" name="email" placeholder="something@email.com" required)
+                    else if _apiUrl === '/students/login'
+                      input(type="text" id="nis" name="nis" placeholder="NIS" required)
+                    br
+                    br
+                    br
+                    input(id = 'password' name = 'password' required type='password', placeholder='Password')
+                    br
+                    // <p align="right">forgot username and password?</p>
+                    //.form-check.form-check-inline
+                    br
+                    input(value = 'Login' class = " btn btn-primary btn-sm" type='submit', style='background-color: #FE4A55; padding: 0 20px 5px 20px') 
         
