@@ -8,7 +8,7 @@ var logger = require('morgan');
 var indexRouter = require('./routes/index');
 var studentRouter = require('./routes/student');
 var adminRouter = require('./routes/admin');
-
+var dashboardRouter = require('./routes/dashboard');
 var api = require("./routes/api");
 const session = require('express-session');
 const { default: jsQR } = require('jsqr');
@@ -43,6 +43,9 @@ app.use('/admin', adminRouter);
 app.use('/api', api, (req, res) => {
   if(!Object.keys(req.body).length) res.sendStatus(400);
 })
+app.use('/dashboard',dashboardRouter);
+
+
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));

@@ -34,7 +34,7 @@ html
 
                 if role !== "" 
                   form(action="/logout", method="post")
-                    input(type="submit" value="Logout")
+                    input(value = 'Logout' class = " btn btn-primary btn-sm" type='submit', style='background-color: #FE4A55; padding: 0 20px 5px 20px')
               li
                 a(href='')
                   i.fab.fa-instagram
@@ -84,7 +84,7 @@ html
             li.nav-item
               a.nav-link(href='#') Gallery
             li.nav-item
-              a.nav-link(href='#') Absensi
+              a.nav-link(href='/dashboard') Absensi
             li.nav-item
               a.nav-link(href='#') Lainnya
     block content
