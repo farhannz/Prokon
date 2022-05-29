@@ -1,0 +1,55 @@
+doctype html
+html
+  head
+    title Dashboard
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+    link(rel='stylesheet', href='http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.css')
+    script(src='http://code.jquery.com/jquery-1.10.2.min.js')
+    script(src='http://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.js')
+    link(rel='stylesheet', href='/jquery-mobile.css')
+    script(src='/jquery-mobile.js')
+  body
+    // ------------ First page for form ---------
+    div(data-role='page')
+      // ------------ First page header ---------
+      div(data-role='header')
+        h1 Dashboard
+      // ------------ First page main content ---------
+      .ui-content(data-role='main')
+        .ui-grid-a
+          a(href='dashboard.html', rel='external')
+            input(type='image', src='/Image/Header.png')
+        .ui-grid-a
+          .ui-block-a
+            a.ui-shadow.ui-btn.ui-corner-all(style='height:140px;width: 130px;')
+              input(type='image', src='/Image/LMS.png')
+          .ui-block-b
+            a.ui-shadow.ui-btn.ui-corner-all(style='height:140px;width: 130px', href='form_kehadiran.html', rel='external')
+              input(type='image', src='/Image/Kehadiran.png')
+          .ui-block-a
+            a.ui-shadow.ui-btn.ui-corner-all(style='height:140px;width: 130px', href='../Website/fullprofile.html', rel='external')
+              input(type='image', src='/Image/Website.png')
+          .ui-block-b
+            a.ui-shadow.ui-btn.ui-corner-all(style='height:140px;width: 130px', href='form_ketidakhadiran.html', rel='external')
+              input(type='image', src='/Image/Ketidakhadiran.png')
+        // /grid-a
+        .ui-grid-solo
+          .ui-block-a
+            a.ui-shadow.ui-btn.ui-corner-all(style='height:140px;width: 130px', href='form_buku_tamu.html', rel='external')
+              input(type='image', src='/Image/Buku_Tamu.png')
+      //
+        -----------------------------------------------------------
+        End of First page
+        ------------------------------------------------------------
+      // ------------ Second page ---------
+      #pageone(data-role='page')
+        // ------------ Second page header ---------
+        div(data-role='header')
+          h1 Dashboard
+        // ------------ Second page main content ---------
+        .ui-content(data-role='main')
+          h2 Dashboard
+      //
+        -----------------------------------------------------------
+        End of Second page
+        ------------------------------------------------------------
