@@ -56,18 +56,20 @@ router.get('/', function(req, res, next) {
     fetchedData.then((json)=>{
       // console.log(json)
       qrcode = json["uri"]
-      res.render('index', { 
-        title         : 'Attendance System',
-        textDebug     : "(Debugging & Development Envirionment)",
-        qrcode        : qrcode ,
-        angkatanData  : dummyData.angkatan,
-        pilihanData   : dummyData.pilihan,
-        kelasData     : dummyData.kelas,
-        reqBody       : req.body.Angkatan,
-        _kelas        : kelas,
-        role          : role,
-        _nama         : nama
-      });
+       res.render('main-test'
+      , { 
+      //   title         : 'Attendance System',
+      //   textDebug     : "(Debugging & Development Envirionment)",
+      //   qrcode        : qrcode ,
+      //   angkatanData  : dummyData.angkatan,
+      //   pilihanData   : dummyData.pilihan,
+      //   kelasData     : dummyData.kelas,
+      //   reqBody       : req.body.Angkatan,
+      //   _kelas        : kelas,
+         role          : role,
+      //   _nama         : nama
+       }
+      );
     })
   }
   m_render()

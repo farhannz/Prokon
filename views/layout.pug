@@ -1,7 +1,145 @@
 doctype html
 html
   head
-    title= title
-    link(rel='stylesheet', href='/stylesheets/style.css')
+    meta(charset='UTF-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1.0')
+    meta(http-equiv='X-UA-Compatible', content='ie=edge')
+    title SMAN 1 Ciawi
+    link(rel='stylesheet', href='/css/main-page.css')
+    |  
+    link(rel='stylesheet', href='https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css', integrity='sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh', crossorigin='anonymous')
+    link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css')
+    link(rel='stylesheet', href='/js/assets/owl.carousel.min.css')
+    link(rel='stylesheet', href='/js/assets/owl.theme.default.min.css')
   body
+    section#topbar
+      .topbar
+        .row
+          .col-md-9
+            ul.top-left-contact
+              li
+                a(href='')
+                  i.fas.fa-phone
+                  |  023 678 999 001
+              li
+                a(href='')
+                  i.fas.fa-envelope
+                  |  sman1ciawibgr
+          .col-md-3
+            ul.sosmed
+              li  
+                if role === ""
+                  a(href="/students/login") 
+                    button.btn.btn-primary.btn-sm(type='button', style='background-color: #FE4A55;') Login
+
+                if role !== "" 
+                  form(action="/logout", method="post")
+                    input(type="submit" value="Logout")
+              li
+                a(href='')
+                  i.fab.fa-instagram
+              li
+                a(href='')
+                  i.fab.fa-facebook
+              li
+                a(href='')
+                  i.fab.fa-twitter
+    header
+      .container-fluid
+        .row
+          .col-md-9
+            .brand
+              img(src='/assets/sma1ciawi 1.png', alt='')
+              .brand-name
+                h1 SMAN 1 Ciawi Bogor
+                h3 SMAN1C Cerdas Berkarakter
+          .col-md-3.searchbox-wrapper
+            .searchcbox
+              form(method='get')
+                .input-group
+                  input.form-control(type='text', name='search', placeholder='search...', aria-label='search-button', aria-describedby='search-button', style='border-radius: 5px 0px 0px 5px;')
+                  .input-group-append
+                    button#search-button.btn.btn-utama Search
+        // -row
+      // -container
+    // menu
+    nav.navbar.navbar-expand-lg.navbar-light.bg-warna
+      .container-fluid
+        button.navbar-toggler(type='button', data-toggle='collapse', data-target='#navbarTogglerDemo01', aria-controls='navbarTogglerDemo03', aria-expanded='false', aria-label='Toggle navigation')
+          span.navbar-toggler-icon
+        .collapse.navbar-collapse(id='#navbarTogglerDemo01')
+          ul.navbar-nav.mr-auto.mt-2.mt-lg-0
+            li.nav-item.active
+              a.nav-link(href='#')
+                | Beranda 
+                span.sr-only (current)
+            li.nav-item
+              a.nav-link(href='#') Profil
+            li.nav-item
+              a.nav-link(href='#') Prestasi
+            li.nav-item
+              a.nav-link(href='#') Ekskul
+            li.nav-item
+              a.nav-link(href='#') Berita
+            li.nav-item
+              a.nav-link(href='#') Gallery
+            li.nav-item
+              a.nav-link(href='#') Absensi
+            li.nav-item
+              a.nav-link(href='#') Lainnya
     block content
+    footer.mt-auto
+      .container-fluid
+        .row
+          .col-md.pad
+            .brand
+              img(src='/assets/sma1ciawi 1.png', alt='')
+              .brand-name-2
+                h1.color SMAN 1 Ciawi Bogor
+                h3.color SMAN1C Cerdas Berkarakter
+            p.text-justify.color
+              | Bekerja untuk membawa perubahan signifikan dalam pembelajaran berbasis online dengan persiapan kurikulum yang ekstensif dan keterlibatan aktif dari siswa!
+            hr.hr-footer
+            .row.sosmed-footer
+              a(href='')
+                i.fab.fa-instagram.fa-2x
+              a(href='')
+                i.fab.fa-facebook.fa-2x
+              a(href='')
+                i.fab.fa-twitter.fa-2x
+          .col-md
+            h2.text-center.color Kontak Kami
+            br
+            p.color
+              i.fa-solid.fa-location-dot
+              |  Jln. Veteran III Desa Banjarsari Ciawi Kabupaten Bogor. 16720
+            p.color
+              i.fa-solid.fa-phone
+              |  +622518240444
+            p.color
+              i.fa.fa-envelope
+              |  sman1ciawi_bogor@yahoo.com
+          .col-md
+            h2.text-center.color Navigasi
+            br
+            table.text-center.color
+              tbody
+                tr
+                  td
+                    a(href='#') Beranda
+                  td
+                    a(href='#') Profil
+                  td
+                    a(href='#') Prestasi
+                tr
+                  td
+                    a(href='#') Ekskul
+                  td
+                    a(href='#') Berita
+                  td
+                    a(href='#') Gallery
+                tr
+                  td
+                    a(href='#') Absen
+                  td
+                    a(href='#') Lainnya
