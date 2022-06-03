@@ -13,4 +13,4 @@ const healthModel = new Schema(
   },
 );
 
-module.exports = mongoose.model('health', healthModel);
+module.exports = mongoose.model('health', healthModel, "healths");
