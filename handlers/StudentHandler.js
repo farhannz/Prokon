@@ -1,4 +1,6 @@
 const Student = require('../models/StudentModel');
+const Health = require('../models/HealthModel');
+const Attendance = require('../models/AttendanceModel');
 const jwt = require('jsonwebtoken');
 const Role = require('../helpers/role');
 const bcrypt = require('bcryptjs');
@@ -143,25 +145,22 @@ const checkInStudent = function(req, res){
       var query = { idKelas : payload.classStudent };
       dbo.collection("qrcodes").findOne(query,function(err,data){
           if(err) throw err
-          // console.log(data)
-          if(data){
-            const { nis } = jwt.verify(req.cookies.token, process.env.SECRET)
-            Student.findOne({ nis }, function(err, data){
+          console.log(data)
+          if(data /*&& payload.QRScanData == data.secured*/){
+            const { nis, nama, kelas } = jwt.verify(req.cookies.token, process.env.SECRET)
+            Student.findOne({ nis }, {_id: 0, password: 0}, function(err, data){
               if(err) throw err
               if(data){
                 // console.log(res)
                 console.log(data)
-                res.redirect(301, '/students/attendance')
-                // res.render('attendance',)
+                // res.redirect(301, '/students/attendance')
+                res.render('attendance',{
+                    _nama: nama,
+                    _kelas: kelas,
+                    _nis: nis,
+                  })
               }
             })
-            // res.render('', {
-
-            // })
-
-              // response.status = 'ok'
-              // response.uri = data.uri
-              // res.json(response)
           }
           else {
             res.send({})
@@ -169,28 +168,34 @@ const checkInStudent = function(req, res){
       });
     })
   }
-  // decode = {
-  //     Angkatan : req.angkatan,
-  //     Pilihan : data.pilihan,
-  //     Kelas   : data.kelas
-  // }
-  // console.log(bcrypt.compareSync(JSON.stringify(decode),data.secured))
-  // res.json(payload)
-  // res.json("Gagal")
 }
 
 const attendanceForm = function(req, res){
-  const { nis } = jwt.verify(req.cookies.token, process.env.SECRET)
-  Student.findOne({ nis }, function(err, data){
+  console.log(req.body);
+
+  Student.findOne({ nis: req.body.nis }, function(err, data){
     if(err) throw err
     if(data){
-      res.render('attendance', {
-        _id: data._id,
-        nama: data.nama,
-        kelas: data.class_id,
+      Health({
+        studentId: data._id,
+        student_condition: req.body.kondisi_siswa == "sehat" ? true : false,
+        family_condition: req.body.kondisi_keluarga == "sehat" ? true : false,
+      }).save()
+      .then(health => {
+        Attendance({
+          studentId: health.studentId,
+          healthId: health._id,
+        }).save()
+        .then(attendance => {
+            res.send({
+                message: 'Attendance submitted successfully',
+                attendance,
+            })
+        })
       })
     }
   })
+  // const  = jwt.verify(req.cookies.token, process.env.SECRET)
 }
 
 

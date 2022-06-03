@@ -31,6 +31,6 @@ router.post('/', authorize(Role.Admin), createStudent)
 router.get('/:nis', authorize([Role.Admin, Role.Student]), getStudentByNIS);
 router.patch('/:nis', authorize([Role.Admin, Role.Student]), updateStudentByNIS);
 router.post('/checkin', authorize(Role.Student), checkInStudent);
-router.get('/attendance', authorize(Role.Student), attendanceForm);
+router.post('/attendance', authorize(Role.Student), attendanceForm);
 
 module.exports = router;
