@@ -15,6 +15,10 @@ require('../helpers/dotenv');
 /* GET home page. */
 router.get('/', function(req, res, next) {
 
+    // Change this to set debugMode | true or false
+    var debugMode = false;
+
+
     if(req.cookies.token){
         console.log(req.ip)
         console.log(process.env.SECRET)
@@ -37,15 +41,17 @@ router.get('/', function(req, res, next) {
             console.log(decoded)
             role = decoded.role
             if(role === 'Student'){
-            kelas = decoded.kelas.replace(/\s/g, '')
-            nama = decoded.nama
+                kelas = decoded.kelas.replace(/\s/g, '')
+                nama = decoded.nama
             }
             else if(role === "Admin"){
-            nama = "Admin"
-            kelas = "Admin"
+                nama = "Admin"
+                kelas = "Admin"
             }
         }
-
+        if(debugMode && req.query !== {}){
+            kelas = req.query.Angkatan + req.query.Pilihan + req.query.Kelas;
+        }
         const fetchedData = fetch('http://localhost:3000/api/generate/' + kelas)
             .then(res => res.json())
             .then(json => {
@@ -64,7 +70,7 @@ router.get('/', function(req, res, next) {
             //   pilihanData   : dummyData.pilihan,
             //   kelasData     : dummyData.kelas,
             //   reqBody       : req.body.Angkatan,
-                _debug        : true,
+                _debug        : debugMode,
                 _kelas        : kelas,
                 role          : role,
                 _nama         : nama

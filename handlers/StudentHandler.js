@@ -146,8 +146,9 @@ const checkInStudent = function(req, res){
       var query = { idKelas : payload.classStudent };
       dbo.collection("qrcodes").findOne(query,function(err,data){
           if(err) throw err
+          // console.log(payload)
           console.log(data)
-          if(data /*&& payload.QRScanData == data.secured*/){
+          if(data && payload.QRScanData == data.secured){
             const { nis, nama, kelas } = jwt.verify(req.cookies.token, process.env.SECRET)
             Student.findOne({ nis }, {_id: 0, password: 0}, function(err, data){
               if(err) throw err
@@ -164,7 +165,12 @@ const checkInStudent = function(req, res){
             })
           }
           else {
-            res.send({})
+            res.render('responseMessage',{
+              _messageTitle : 'Redirecting...',
+              _message: "QRCode yang Anda scan tidak sesuai dengan kelas Anda! Berpindah dalam 1 detik...",
+              _path: "/scanner",
+              _time : 1000
+            })
           }
       });
     })
