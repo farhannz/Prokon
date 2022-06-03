@@ -1,7 +1,13 @@
 const Student = require('../models/StudentModel');
 const jwt = require('jsonwebtoken');
 const Role = require('../helpers/role');
-const bcrypt = require('bcryptjs')
+const bcrypt = require('bcryptjs');
+var mongodb = require('mongodb');
+require('../helpers/dotenv');
+var client = mongodb.MongoClient;
+var url = process.env.DB_URL;
+var dbName = process.env.DB_NAME;
+
 const getAllStudents = function(req, res) {
     try{
       // console.log(req)
@@ -126,16 +132,65 @@ const updateStudentByNIS = function(req, res) {
 
 const checkInStudent = function(req, res){
   
-  console.log(req.ip)
   var payload = req.body;
+  console.log(payload)
+
+  if (payload.QRScanData) {
+    client.connect(url,function(err,db){
+      if(err) throw err
+      dbo = db.db(dbName)
+      // console.log(req.params)
+      var query = { idKelas : payload.classStudent };
+      dbo.collection("qrcodes").findOne(query,function(err,data){
+          if(err) throw err
+          // console.log(data)
+          if(data){
+            const { nis } = jwt.verify(req.cookies.token, process.env.SECRET)
+            Student.findOne({ nis }, function(err, data){
+              if(err) throw err
+              if(data){
+                // console.log(res)
+                console.log(data)
+                // res.redirect(301, '/students/attendance')
+                res.render('attendance',)
+              }
+            })
+            // res.render('', {
+
+            // })
+
+              // response.status = 'ok'
+              // response.uri = data.uri
+              // res.json(response)
+          }
+          else res.send({})
+      });
+    })
+  }
   // decode = {
   //     Angkatan : req.angkatan,
   //     Pilihan : data.pilihan,
   //     Kelas   : data.kelas
   // }
   // console.log(bcrypt.compareSync(JSON.stringify(decode),data.secured))
-  res.json(payload)
+  // res.json(payload)
+  res.json("Gagal")
 }
+
+const attendanceForm = function(req, res){
+  const { nis } = jwt.verify(req.cookies.token, process.env.SECRET)
+  Student.findOne({ nis }, function(err, data){
+    if(err) throw err
+    if(data){
+      res.render('attendance', {
+        _id: data._id,
+        nama: data.nama,
+        kelas: data.class_id,
+      })
+    }
+  })
+}
+
 
 module.exports = { 
     getAllStudents, 
@@ -143,5 +198,6 @@ module.exports = {
     studentLogin, 
     getStudentByNIS,
     updateStudentByNIS,
-    checkInStudent 
+    checkInStudent,
+    attendanceForm
 };

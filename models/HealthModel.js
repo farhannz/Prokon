@@ -5,8 +5,8 @@ const { Schema } = mongoose;
 const healthModel = new Schema(
   {
     studentId: { type: Schema.Types.ObjectId, ref: 'Student' },
-    description: { type: String, required: true },
-    filepath: { type: String },
+    student_condition: { type: Boolean, required: true },
+    family_condition: { type: Boolean },
   },
   {
     timestamps: true,
