@@ -2,7 +2,7 @@ doctype html
 html
   head
     meta(charset='UTF-8')
-    meta(name='viewport', content='width=device-width, initial-scale=1.0')
+    meta(name='viewport', content='width=device-width, initial-scale=1.0 shrink-to-fit=no')
     meta(http-equiv='X-UA-Compatible', content='ie=edge')
     title SMAN 1 Ciawi
     link(rel='stylesheet', href='/css/main-page.css')
@@ -63,36 +63,68 @@ html
         // -row
       // -container
     // menu
-    nav.navbar.navbar-expand-lg.navbar-light.bg-warna
+
+    nav.navbar.navbar-expand-lg.navbar-light.bg-light
       .container-fluid
-        button.navbar-toggler(type='button', data-toggle='collapse', data-target='#navbarTogglerDemo01', aria-controls='navbarTogglerDemo03', aria-expanded='false', aria-label='Toggle navigation')
+        a.navbar-brand(href='#') SMAN1C
+        button.navbar-toggler(type='button' data-toggle='collapse' data-target='#navbarNavDropdown' aria-controls='navbarNavDropdown' aria-expanded='false' aria-label='Toggle navigation')
           span.navbar-toggler-icon
-        .collapse.navbar-collapse(id='#navbarTogglerDemo01')
-          ul.navbar-nav.mr-auto.mt-2.mt-lg-0
+        #navbarNavDropdown.collapse.navbar-collapse
+          ul.navbar-nav
             if role !== 'Admin'
               li.nav-item.active
-                a.nav-link(href='/')
-                  | Beranda 
+                a.nav-link(href='/') Beranda 
                   span.sr-only (current)
-              li.nav-item
-                a.nav-link(href='#') Profil
-              li.nav-item
-                a.nav-link(href='#') Prestasi
-              li.nav-item
-                a.nav-link(href='#') Ekskul
-              li.nav-item
-                a.nav-link(href='#') Berita
-              li.nav-item
-                a.nav-link(href='#') Gallery
               li.nav-item
                 a.nav-link(href='/dashboard') Absensi
               li.nav-item
-                a.nav-link(href='#') Lainnya
+                a.nav-link(href='#') Profil 
+              li.nav-item
+                a.nav-link(href='#') Prestasi
+              li.nav-item
+                a.nav-link(href='#') Ekskul 
+              li.nav-item
+                a.nav-link(href='#') Berita
+              li.nav-item
+                a.nav-link(href='#') Galleri
             else
               li.nav-item.active
                 a.nav-link(href='/admin')
                   | Admin 
                   span.sr-only (current)
+      |
+      |
+
+    //- nav.navbar.navbar-expand-lg.navbar-light.bg-warna
+    //-   .container-fluid
+    //-     button.navbar-toggler(type='button', data-toggle='collapse', data-target='#navbarTogglerDemo01', aria-controls='navbarTogglerDemo03', aria-expanded='false', aria-label='Toggle navigation')
+    //-       span.navbar-toggler-icon
+    //-     .collapse.navbar-collapse(id='#navbarTogglerDemo01')
+    //-       ul.navbar-nav.mr-auto.mt-2.mt-lg-0
+    //-         if role !== 'Admin'
+    //-           li.nav-item.active
+    //-             a.nav-link(href='/')
+    //-               | Beranda 
+    //-               span.sr-only (current)
+    //-           li.nav-item
+    //-             a.nav-link(href='#') Profil
+    //-           li.nav-item
+    //-             a.nav-link(href='#') Prestasi
+    //-           li.nav-item
+    //-             a.nav-link(href='#') Ekskul
+    //-           li.nav-item
+    //-             a.nav-link(href='#') Berita
+    //-           li.nav-item
+    //-             a.nav-link(href='#') Gallery
+    //-           li.nav-item
+    //-             a.nav-link(href='/dashboard') Absensi
+    //-           li.nav-item
+    //-             a.nav-link(href='#') Lainnya
+    //-         else
+    //-           li.nav-item.active
+    //-             a.nav-link(href='/admin')
+    //-               | Admin 
+    //-               span.sr-only (current)
     block content
     footer.mt-auto
       .container-fluid
