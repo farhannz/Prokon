@@ -1,6 +1,7 @@
 const Student = require('../models/StudentModel');
 const Health = require('../models/HealthModel');
 const Attendance = require('../models/AttendanceModel');
+const Absence = require('../models/AbsenceModel');
 const jwt = require('jsonwebtoken');
 const Role = require('../helpers/role');
 const bcrypt = require('bcryptjs');
@@ -195,9 +196,35 @@ const attendanceForm = function(req, res){
       })
     }
   })
-  // const  = jwt.verify(req.cookies.token, process.env.SECRET)
 }
 
+const absenceForm = function(req, res){
+  console.log(req.body);
+
+  Student.findOne({ nis: req.body.nis }, function(err, data){
+    if(err) throw err
+    if(data){
+      Health({
+        studentId: data._id,
+        student_condition: req.body.kondisi_siswa == "sehat" ? true : false,
+        family_condition: req.body.kondisi_keluarga == "sehat" ? true : false,
+      }).save()
+      .then(health => {
+        Absence({
+          studentId: health.studentId,
+          healthId: health._id,
+          description: req.body.description,
+        }).save()
+        .then(absence => {
+            res.send({
+                message: 'Absence submitted successfully',
+                absence,
+            })
+        })
+      })
+    }
+  })
+}
 
 module.exports = { 
     getAllStudents, 
@@ -206,5 +233,6 @@ module.exports = {
     getStudentByNIS,
     updateStudentByNIS,
     checkInStudent,
-    attendanceForm
+    attendanceForm,
+    absenceForm
 };
