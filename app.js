@@ -10,6 +10,8 @@ var studentRouter = require('./routes/student');
 var adminRouter = require('./routes/admin');
 var dashboardRouter = require('./routes/dashboard');
 var scannerRouter = require('./routes/scanner');
+var absenceRouter = require('./routes/absence');
+
 var api = require("./routes/api");
 const session = require('express-session');
 const { default: jsQR } = require('jsqr');
@@ -46,6 +48,7 @@ app.use('/api', api, (req, res) => {
 })
 app.use('/dashboard',dashboardRouter);
 app.use('/scanner',scannerRouter);
+app.use('/absence',absenceRouter);
 
 
 // catch 404 and forward to error handler
