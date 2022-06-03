@@ -151,8 +151,8 @@ const checkInStudent = function(req, res){
               if(data){
                 // console.log(res)
                 console.log(data)
-                // res.redirect(301, '/students/attendance')
-                res.render('attendance',)
+                res.redirect(301, '/students/attendance')
+                // res.render('attendance',)
               }
             })
             // res.render('', {
@@ -163,7 +163,9 @@ const checkInStudent = function(req, res){
               // response.uri = data.uri
               // res.json(response)
           }
-          else res.send({})
+          else {
+            res.send({})
+          }
       });
     })
   }
@@ -174,7 +176,7 @@ const checkInStudent = function(req, res){
   // }
   // console.log(bcrypt.compareSync(JSON.stringify(decode),data.secured))
   // res.json(payload)
-  res.json("Gagal")
+  // res.json("Gagal")
 }
 
 const attendanceForm = function(req, res){
