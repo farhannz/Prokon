@@ -7,8 +7,11 @@ var fetch = require('node-fetch');
 const { default: adapter } = require('webrtc-adapter');
 const jwt = require('jsonwebtoken');
 const authorize = require('../helpers/jwt');
+const role = require('../helpers/role');
 var dummyData = {angkatan : ["X","XI","XII"], pilihan : ["IPA","IPS"], kelas : ["1","2","3","4"]}
 require('../helpers/dotenv');
+const Checkout = require('../models/CheckoutModel');
+const Student = require('../models/StudentModel');
 
 router.post('/logout',function(req,res,next){
   res.clearCookie("token")
@@ -77,6 +80,31 @@ router.get('/', function(req, res, next) {
   m_render()
 });
 
+router.get('/checkout', authorize(role.Student), function(req, res){
+  const { nis } = jwt.verify(req.cookies.token, process.env.SECRET);
+  Student.findOne({nis: nis}, function(err, student){
+    if(err){
+      console.log(err)
+    }
+    else{
+      Checkout({
+        studentId : student._id
+      }).save(function(err, checkout){
+        if(err){
+          console.log(err)
+        }
+        else{
+          res.render('responseMessage',{
+            _messageTitle : 'Redirecting...',
+            _message: "Anda telah berhasil checkout",
+            _path: "/dashboard",
+            _time : 1000
+          })
+        }
+      })
+    }
+  })
+})
 // router.post('/', function(req, res, next) {
 //   var payload = req.body;
   
