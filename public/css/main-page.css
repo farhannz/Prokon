@@ -31,11 +31,14 @@ body {
 }
 
 @media (max-width: 768px) {
-    .sosmed {
+    .top-left-contact {
       display: none;
     }
     .brand {
         margin-bottom: 20px;
+    }
+    .sosmed {
+        text-align: left;
     }
   }
 
@@ -193,9 +196,8 @@ nav {
 
 @media (max-width: 768px) {
     #profil {
-      display: inline-block;
-      position: relative;
-      z-index: -1;
+        position: relative;
+        z-index: -1;
     }
     .navbar-collapse{
         background-color: white;
