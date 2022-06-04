@@ -1,6 +1,6 @@
 doctype html
 head
-  title Form Kehadiran
+  title Form Ketidakhadiran
   meta(name='viewport' content='width=device-width, initial-scale=1')
   link(rel='stylesheet' href='https://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.css')
   script(src='https://code.jquery.com/jquery-1.10.2.min.js')
@@ -11,11 +11,11 @@ head
 div(data-role='page')
   // ------------ First page header ---------
   div(data-role='header')
-    h1 Form Kehadiran
+    h1 Form Ketidakhadiran
   // ------------ First page main content ---------
   .ui-content(data-role='main')
     .ui-grid-a
-      a(href='dashboard.html' rel='external')
+      a(href='/dashboard' rel='external')
         input(type='image' src='/Image/Header.png')
     form(method='post' action='/students/absence' data-ajax='false')
       input#nama(type='hidden', name='nis', placeholder='Nama' value=_nis readonly)
@@ -40,7 +40,7 @@ div(data-role='page')
             label(for='tidak_sehat') Tidak Sehat
             input#tidak_sehat(type='radio', name='kondisi_keluarga', value='tidak_sehat')
       label(for='info') Keterangan :
-      textarea#info(name='description' placeholder=' ' required)
+      textarea#info(name='description' placeholder=' ' required style="resize: none;")
       //
         <fieldset data-role="controlgroup">
         <legend>Qualification:</legend>
@@ -62,10 +62,10 @@ div(data-role='page')
   #pageone(data-role='page')
     // ------------ Second page header ---------
     div(data-role='header')
-      h1 Form Kehadiran
+      h1 Form Ketidakhadiran
     // ------------ Second page main content ---------
     .ui-content(data-role='main')
-      h2 Form Kehadiran...!!
+      h2 Form Ketidakhadiran...!!
   //
     -----------------------------------------------------------
     End of Second page

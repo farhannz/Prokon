@@ -1,7 +1,7 @@
 doctype html
 html
   head
-    title Form Kehadiran
+    title Form Buku Tamu
     meta(name='viewport', content='width=device-width, initial-scale=1')
     link(rel='stylesheet', href='https://code.jquery.com/mobile/1.4.2/jquery.mobile-1.4.2.min.css')
     script(src='https://code.jquery.com/jquery-1.10.2.min.js')
@@ -13,38 +13,23 @@ html
     div(data-role='page')
       // ------------ First page header ---------
       div(data-role='header')
-        h1 Form Kehadiran
+        h1 Form Buku Tamu
       // ------------ First page main content ---------
       .ui-content(data-role='main')
         .ui-grid-a
-          a(href='/dashboard', rel='external')
-            input(type='image', src='/Image/Header.png')
-        form(method='post', action='/students/attendance', data-ajax='false')
-          input#nama(type='hidden', name='nis', placeholder='Nama' value=_nis readonly)
-          label(for='nama')
+            a(href='/' rel='external')
+                input(type='image' src='/Image/Header.png')
+        form(method='post', action='/guest', data-ajax='false')
+          label(for='nama_tamu')
             | Nama : 
             span
-          input#nama(type='text', name='nama', placeholder='Nama' value=_nama readonly)
-          label(for='Kelas')
-            | Kelas : 
+          input#nama_tamu(type='text', name='nama_tamu' placeholder='Nama')
+          label(for='asal')
+            | Asal Instansi : 
             span
-          input#Kelas(type='text', name='Kelas', placeholder='Kelas' value=_kelas readonly)
-          label(for='Suhu')
-            | Suhu : 
-            span
-          input#Suhu(type='number', name='Suhu', placeholder='Suhu' step=".01" required)
-          fieldset(data-role='controlgroup')
-            legend Kondisi Siswa:
-            label(for='sehat') Sehat
-            input#sehat(type='radio', name='kondisi_siswa', value='sehat' required)
-            label(for='tidak_sehat') Tidak Sehat
-            input#tidak_sehat(type='radio', name='kondisi_siswa', value='tidak_sehat')
-          fieldset(data-role='controlgroup')
-            legend Kondisi Keluarga:
-            label(for='sehat') Sehat
-            input#sehat(type='radio', name='kondisi_keluarga', value='sehat' required)
-            label(for='tidak_sehat') Tidak Sehat
-            input#tidak_sehat(type='radio', name='kondisi_keluarga', value='tidak_sehat')
+          input#asal(type='text', name='asal', placeholder='Asal Instansi')
+          label(for='tujuan') Tujuan :
+          textarea#info(name='tujuan', placeholder=' ' style="resize: none;")
           //
             <fieldset data-role="controlgroup">
             <legend>Qualification:</legend>
@@ -66,10 +51,10 @@ html
       #pageone(data-role='page')
         // ------------ Second page header ---------
         div(data-role='header')
-          h1 Form Kehadiran
+          h1 Form Buku Tamu
         // ------------ Second page main content ---------
         .ui-content(data-role='main')
-          h2 Form Kehadiran...!!
+          h2 Form Buku Tamu...!!
       //
         -----------------------------------------------------------
         End of Second page
