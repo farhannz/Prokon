@@ -7,7 +7,7 @@ const healthModel = new Schema(
     studentId: { type: Schema.Types.ObjectId, ref: 'student' },
     student_condition: { type: Boolean, required: true },
     family_condition: { type: Boolean, required: true  },
-    temperature: { type: Number, required: true  },
+    temperature: { type: Number },
   },
   {
     timestamps: true,

@@ -102,7 +102,7 @@ const studentLogin = function(req, res) {
                 if(token){
                   // res.set('authorization', "Bearer" + token)
                   res.cookie('token',token,{ httpOnly: true, secure: true})
-                  res.redirect(301,'/')
+                  res.redirect(301,'/dashboard')
                 }
               }
               else{
@@ -239,10 +239,12 @@ const absenceForm = function(req, res){
           description: req.body.description,
         }).save()
         .then(absence => {
-            res.send({
-                message: 'Absence submitted successfully',
-                absence,
-            })
+          res.render('responseMessage',{
+            _messageTitle : 'Redirecting...',
+            _message: "Anda telah mengisi data ketidakharian! Berpindah dalam 1 detik...",
+            _path: "/dashboard",
+            _time : 1000
+          })
         })
       })
     }

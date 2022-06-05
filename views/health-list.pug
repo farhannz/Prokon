@@ -19,7 +19,7 @@ block content
               td= i++
               td= health.studentId.name
               td= health.studentId.class_id
-              td= health.temperature
+              td= health.temperature ? health.temperature : '-'
               td= health.student_condition ? 'Sehat' : 'Tidak Sehat'
               td= health.family_condition ? 'Sehat' : 'Tidak Sehat'
               td= new Date(health.createdAt).toLocaleDateString('id-ID', { weekday: 'long', year: 'numeric', month: 'short', day: 'numeric', hour: 'numeric', minute: 'numeric', timeZoneName: 'short' })

@@ -1,15 +1,15 @@
 extends layout 
 block content       
     .container
-      h3 Absensi List
+      h3 Data Ketidakhadiran
       table.content-table
         thead
           tr
             th No.
             th Name
             th Kelas
-            th Jam Masuk
             th Keterangan
+            th Waktu
         tbody
           - var i = 1
           each absence in absences
@@ -17,5 +17,5 @@ block content
               td= i++
               td= absence.studentId.name
               td= absence.studentId.class_id
-              td= new Date(absence.createdAt).toLocaleDateString('id-ID', { weekday: 'long', year: 'numeric', month: 'short', day: 'numeric', hour: 'numeric', minute: 'numeric', timeZoneName: 'short' })
               td= absence.description
+              td= new Date(absence.createdAt).toLocaleDateString('id-ID', { weekday: 'long', year: 'numeric', month: 'short', day: 'numeric', hour: 'numeric', minute: 'numeric', timeZoneName: 'short' })
