@@ -201,6 +201,7 @@ const attendanceForm = function(req, res){
         studentId: data._id,
         student_condition: req.body.kondisi_siswa == "sehat" ? true : false,
         family_condition: req.body.kondisi_keluarga == "sehat" ? true : false,
+        temperature: parseFloat(req.body.Suhu)
       }).save()
       .then(health => {
         Attendance({
@@ -208,9 +209,11 @@ const attendanceForm = function(req, res){
           healthId: health._id,
         }).save()
         .then(attendance => {
-            res.send({
-                message: 'Attendance submitted successfully',
-                attendance,
+            res.render('responseMessage',{
+              _messageTitle : 'Redirecting...',
+              _message: "Anda berhasil melakukan presensi! Berpindah dalam 1 detik...",
+              _path: "/dashboard",
+              _time : 1000
             })
         })
       })
@@ -266,6 +269,26 @@ const getAllStudentsAttendances = function(req, res) {
   }
 }
 
+const getAllStudentsHealth = function(req, res) {
+  try{
+    Health.
+      find({}).
+      populate('studentId').
+      exec(function (err, healths) {
+        if (err) throw err;
+        console.log(healths);
+
+        res.render('health-list', {
+          role : "Admin",
+          healths
+        })
+      });
+
+  } catch(err){
+    res.send(err);
+  }
+}
+
 module.exports = { 
     getAllStudents, 
     createStudent, 
@@ -275,5 +298,6 @@ module.exports = {
     checkInStudent,
     attendanceForm,
     absenceForm,
-    getAllStudentsAttendances
+    getAllStudentsAttendances,
+    getAllStudentsHealth
 };

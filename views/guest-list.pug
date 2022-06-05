@@ -1,0 +1,22 @@
+extends layout 
+block content       
+    .container
+      h3 Buku Tamu
+      table.content-table
+        thead
+          tr
+            th No.
+            th Nama
+            th Tujuan
+            th Instansi
+            th Waktu
+        tbody
+          - var i = 1
+          each guest in guests
+            tr
+              td= i++
+              td= guest.name
+              td= guest.intention
+              td= guest.organization
+              td= new Date(guest.createdAt).toLocaleDateString('id-ID', { weekday: 'long', year: 'numeric', month: 'short', day: 'numeric', hour: 'numeric', minute: 'numeric', timeZoneName: 'short' })
+

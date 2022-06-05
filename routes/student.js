@@ -12,7 +12,8 @@ const {
   checkInStudent, 
   attendanceForm,
   absenceForm,
-  getAllStudentsAttendances
+  getAllStudentsAttendances,
+  getAllStudentsHealth
 } = require('../handlers/StudentHandler');
 
 const {
@@ -37,6 +38,7 @@ router.get('/create', authorize(Role.Admin), function (req, res) {
 })
 router.get('/attendance', authorize(Role.Admin), getAllStudentsAttendances);
 router.get('/absence', authorize(Role.Admin), getAllStudentsAbsences);
+router.get('/health', authorize(Role.Admin), getAllStudentsHealth);
 router.post('/login', studentLogin);
 router.post('/', authorize(Role.Admin), createStudent);
 
