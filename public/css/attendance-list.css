@@ -7,6 +7,12 @@ h3 {
     font-size: 15px;
     padding-top: 20px;
 }
+
+.wrapper {
+    margin-left: 3%;
+    margin-right: 3%;
+}
+
 .content-table {
     border-collapse: collapse;
     margin: 25px 0;
