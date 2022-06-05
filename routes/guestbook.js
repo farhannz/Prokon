@@ -2,8 +2,10 @@ var express = require('express');
 var router = express.Router();
 const jwt = require('jsonwebtoken');
 const { render } = require('../app');
+const authorize = require('../helpers/jwt');
 require('../helpers/dotenv');
 var Guest = require('../models/GuestModel')
+const Role = require('../helpers/role');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -39,5 +41,14 @@ router.post('/', function(req,res,next){
         res.send(err);
     }
 })
+
+router.get('/book', authorize(Role.Admin), function(req, res, next) {
+    Guest.find({}, function(err, guests){
+        res.render('guest-list', {
+            role: 'Admin',
+            guests
+        });
+    })
+});
 
 module.exports = router;
