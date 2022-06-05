@@ -9,24 +9,12 @@ block content
               th No.
               th Name
               th Kelas
-              th Jam Masuk
-              th Jam Keluar
+              th Waktu Masuk
           tbody
-            tr
-              td 1
-              td Yudi Hamengkubuwono 10 12 13 14
-              td X MIPA 1
-              td 07:00
-              td 15:00
-            tr.active-row
-              td 2
-              td Farhan
-              td X MIPA 2
-              td 07:00
-              td 15:00
-            tr
-              td 3
-              td Maki
-              td X MIPA 3
-              td 07:00
-              td 15:00
+            - var i = 1
+            each attendance in attendances
+              tr
+                td= i++
+                td= attendance.studentId.name
+                td= attendance.studentId.class_id
+                td= new Date(attendance.createdAt).toLocaleDateString('id-ID', { weekday: 'long', year: 'numeric', month: 'short', day: 'numeric', hour: 'numeric', minute: 'numeric', timeZoneName: 'short' })

@@ -77,7 +77,7 @@ html
                 a.nav-link(href='/') Beranda 
                   span.sr-only (current)
               li.nav-item
-                a.nav-link(href='/dashboard') Absensi
+                a.nav-link(href='/dashboard') Dashboard
               li.nav-item
                 a.nav-link(href='/guest') Guestbook 
               li.nav-item
@@ -93,8 +93,16 @@ html
             else
               li.nav-item.active
                 a.nav-link(href='/admin')
-                  | Admin 
+                  | Generate QR 
                   span.sr-only (current)
+              li.nav-item
+                a.nav-link(href='/students/create') Tambah Akun Murid
+              li.nav-item
+                a.nav-link(href='/students/attendance') Data Kehadiran 
+              li.nav-item
+                a.nav-link(href='/students/absence') Data Ketidakhadiran 
+              li.nav-item
+                a.nav-link(href='#') Data Kesehatan
       |
       |
 

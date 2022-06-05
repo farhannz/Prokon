@@ -7,7 +7,7 @@ const studentModel = new Schema(
     nis: { type: String, required: true, index: { unique: true } },
     name: { type: String, required: true },
     class_id: { type: String, required: true },
-    password: { type: String, required: true, index: { unique: true } },
+    password: { type: String, required: true },
     email: { type: String, required: true },
     gender: { type: String, enum: ['Perempuan', 'Laki-laki'], required: true },
   },

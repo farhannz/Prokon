@@ -4,13 +4,13 @@ const Student = require('../models/StudentModel');
 const absence = function(req, res) {
     const {
         studentId,
-        filepath,
+        description,
     } = req.body
 
     try{
         Absence({
             studentId,
-            filepath,
+            description,
         })
         .save()
         .then(absence => {
@@ -26,11 +26,18 @@ const absence = function(req, res) {
 
 const getAllStudentsAbsences = function(req, res) {
     try{
-        Absence.find({},{_id : 0}, function(err, data){
-            if(err)
-                res.send(err);
-            res.send(data);
-        });
+        Absence
+            .find({}).
+            populate('studentId').
+            exec(function (err, absences) {
+                if (err) throw err;
+                console.log(absences);
+        
+                res.render('absence-list', {
+                    role : "Admin",
+                    absences
+                })
+            });
     } catch(err){
         res.send(err);
     }

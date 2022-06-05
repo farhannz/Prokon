@@ -4,8 +4,8 @@ const { Schema } = mongoose;
 
 const absenceModel = new Schema(
   {
-    studentId: { type: Schema.Types.ObjectId, ref: 'Student' },
-    healthId: { type: Schema.Types.ObjectId, ref: 'Health' },
+    studentId: { type: Schema.Types.ObjectId, ref: 'student' },
+    healthId: { type: Schema.Types.ObjectId, ref: 'health' },
     description: { type: String, required: true },
   },
   {

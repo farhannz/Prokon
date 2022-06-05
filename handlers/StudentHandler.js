@@ -37,7 +37,7 @@ const getAllStudents = function(req, res) {
 };
 
 const createStudent = function(req, res) {
-    const {
+    var {
         nis,
         name,
         class_id,
@@ -45,24 +45,38 @@ const createStudent = function(req, res) {
         email,
         gender
     } = req.body
+    console.log(req.body)
 
     try{
         password = bcrypt.hashSync(password,10)
+
         Student({
-            nis,
-            name,
-            class_id,
-            password,
-            email,
-            gender
+            nis: nis,
+            name: name,
+            class_id: class_id,
+            password: password,
+            email: email,
+            gender: gender
         }).save()
         .then(student => {
-            res.send({
-                message: 'Student created successfully',
-                student,
-            })
+          console.log(student)
+          res.render('responseMessage',{
+            _messageTitle : 'Redirecting...',
+            _message: "Akun murid telah berhasil dibuat! Berpindah dalam 1 detik...",
+            _path: "/students/create",
+            _time : 1000
+          })
+        })
+        .catch(err => {
+          res.render('responseMessage',{
+            _messageTitle : 'Redirecting...',
+            _message: "Gagal membuat akun! Berpindah dalam 1 detik...",
+            _path: "/students/create",
+            _time : 1000
+          }) 
         })
     } catch(err){
+      console.log("ERROR")
         res.send(err);
     }
 }
@@ -232,6 +246,26 @@ const absenceForm = function(req, res){
   })
 }
 
+const getAllStudentsAttendances = function(req, res) {
+  try{
+    Attendance.
+      find({}).
+      populate('studentId').
+      exec(function (err, attendances) {
+        if (err) throw err;
+        console.log(attendances);
+
+        res.render('attendance-list', {
+          role : "Admin",
+          attendances
+        })
+      });
+
+  } catch(err){
+    res.send(err);
+  }
+}
+
 module.exports = { 
     getAllStudents, 
     createStudent, 
@@ -240,5 +274,6 @@ module.exports = {
     updateStudentByNIS,
     checkInStudent,
     attendanceForm,
-    absenceForm
+    absenceForm,
+    getAllStudentsAttendances
 };
