@@ -1,0 +1,26 @@
+extends layout 
+block content  
+    .container
+      .form-group
+        h3 Create Students
+        label(for='exampleFormControlSelect1') NIS
+        input#inlineFormInput.form-control.mb-2(type='text', placeholder='NIS')
+        label(for='exampleFormControlSelect1') Nama
+        input#inlineFormInput.form-control.mb-2(type='text', placeholder='Name')
+        label(for='exampleFormControlSelect1') Kelas
+        input#inlineFormInput.form-control.mb-2(type='text', placeholder='Kelas')
+        label(for='exampleFormControlSelect1') Password
+        input#inlineFormInput.form-control.mb-2(type='text', placeholder='Password')
+        label(for='exampleFormControlSelect1') Email
+        input#inlineFormInput.form-control.mb-2(type='text', placeholder='Email')
+        label(for='exampleFormControlSelect1') Jenis Kelamin
+        br
+        .form-check.form-check-inline
+          input#inlineRadios1.form-check-input(type='radio', name='exampleRadios', value='option1', checked='')
+          label.form-check-label(for='exampleRadios1')
+            | Laki-Laki
+        .form-check.form-check-inline
+          input#inlineRadios1.form-check-input(type='radio', name='exampleRadios', value='option2', checked='')
+          label.form-check-label(for='exampleRadios1')
+            | Perempuan
+      button.btn.btn-primary(type='button', style='margin-right: 20px; background-color: #FE4A55;') Simpan
