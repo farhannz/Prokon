@@ -131,6 +131,12 @@ nav {
     color: #000000;
     font-weight: 500;
 }
+
+.navbar-nav {
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+}
 .navbar-light .navbar-nav .active>.nav-link,
 .navbar-light .navbar-nav .nav-link.active,
 .navbar-light .navbar-nav .nav-link.show,
@@ -141,7 +147,7 @@ nav {
     color: #000000;
 }
 .nav-item {
-    padding: 0px 12%;
+    padding: 0px;
     color: #000000;
 }
 .section-image {
@@ -170,4 +176,28 @@ nav {
         left: 0;
         top: 0;
     }
+}
+
+@media (max-width: 768px) {
+    #isiAdmin {
+        position: relative;
+        z-index: -1;
+    }
+    .navbar-collapse{
+        background-color: white;
+    }
+    #gambarLogin{
+        display:none;
+    }
+  }
+
+@media (max-width: 768px) {
+nav {
+    display: inline-block;
+    max-height: none;
+
+}
+body {
+    margin: 0;
+}
 }

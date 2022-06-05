@@ -11,8 +11,13 @@ const {
   updateStudentByNIS,
   checkInStudent, 
   attendanceForm,
-  absenceForm
+  absenceForm,
+  getAllStudentsAttendances
 } = require('../handlers/StudentHandler');
+
+const {
+  getAllStudentsAbsences,
+} = require('../handlers/AbsenceHandler');
 
 router.get('/login', function(req,res,next){
   if(!req.cookies.token){
@@ -25,10 +30,17 @@ else{
     res.redirect(301,'/')
 }
 });
+router.get('/create', authorize(Role.Admin), function (req, res) {
+  res.render('create-students', {
+    role : "Admin"
+  })
+})
+router.get('/attendance', authorize(Role.Admin), getAllStudentsAttendances);
+router.get('/absence', authorize(Role.Admin), getAllStudentsAbsences);
 router.post('/login', studentLogin);
+router.post('/', authorize(Role.Admin), createStudent);
 
 router.get('/',authorize(Role.Admin), getAllStudents);
-router.post('/', authorize(Role.Admin), createStudent)
 router.get('/:nis', authorize([Role.Admin, Role.Student]), getStudentByNIS);
 router.patch('/:nis', authorize([Role.Admin, Role.Student]), updateStudentByNIS);
 router.post('/checkin', authorize(Role.Student), checkInStudent);
