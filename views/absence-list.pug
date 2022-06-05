@@ -2,20 +2,21 @@ extends layout
 block content       
     .container
       h3 Data Ketidakhadiran
-      table.content-table
-        thead
-          tr
-            th No.
-            th Name
-            th Kelas
-            th Keterangan
-            th Waktu
-        tbody
-          - var i = 1
-          each absence in absences
+      .table-responsive-sm
+        table.content-table
+          thead
             tr
-              td= i++
-              td= absence.studentId.name
-              td= absence.studentId.class_id
-              td= absence.description
-              td= new Date(absence.createdAt).toLocaleDateString('id-ID', { weekday: 'long', year: 'numeric', month: 'short', day: 'numeric', hour: 'numeric', minute: 'numeric', timeZoneName: 'short' })
+              th No.
+              th Name
+              th Kelas
+              th Keterangan
+              th Waktu
+          tbody
+            - var i = 1
+            each absence in absences
+              tr
+                td= i++
+                td= absence.studentId.name
+                td= absence.studentId.class_id
+                td= absence.description
+                td= new Date(absence.createdAt).toLocaleDateString('id-ID', { weekday: 'long', year: 'numeric', month: 'short', day: 'numeric', hour: 'numeric', minute: 'numeric', timeZoneName: 'short' })
